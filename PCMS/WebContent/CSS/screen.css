@@ -1,0 +1,166 @@
+@CHARSET "UTF-8";
+
+/*画面中央表示*/
+.center_screen {
+	text-align: center; /*中央寄せ*/
+	margin-top: 90px; /*要素外側上部余白*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+.center_table {
+	margin: 10px auto; /*テーブル位置*/
+}
+
+th {
+	font-weight: normal; /*文字の太さ*/
+}
+
+.center_screen table tr th {
+	text-align: left; /*テーブル見出し位置*/
+	padding: 5px 5px; /*テーブル見出し間隔*/
+}
+
+.center_screen table tr td {
+	text-align: left; /*テーブルセル要素位置*/
+	padding: 5px 5px; /*テーブルセル要素間隔*/
+}
+
+.center_screen-2 {
+	text-align: center; /*中央寄せ*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+.center_screen-2 table tr th {
+	text-align: left; /*左寄せ*/
+	padding: 10px 10px 10px 60px; /*テーブル見出し間隔*/
+}
+
+.center_screen-2 table tr td {
+	text-align: left; /*左寄せ*/
+	padding: 11px; /*テーブルセル要素間隔*/
+}
+
+.center_screen-3 {
+	text-align: center; /*中央寄せ*/
+	margin-top: 50px; /*要素外側上部余白*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+.center_screen-3 table tr th {
+	text-align: left; /*左寄せ*/
+	padding: 10px 20px; /*テーブル見出し間隔*/
+}
+
+.center_screen-3 table tr td {
+	text-align: left; /*左寄せ*/
+	padding: 25px 5px 5px; /*テーブルセル要素間隔*/
+}
+
+.center_screen-4 {
+	text-align: center; /*中央寄せ*/
+	margin-top: 110px; /*要素外側上部余白*/
+	margin-bottom: 50px; /*要素外側上部余白*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+.center_screen-4 table tr th {
+	text-align: center; /*中央寄せ*/
+	padding: 15px; /*テーブル見出し間隔*/
+}
+
+.center_screen-4 table tr td {
+	text-align: center; /*中央寄せ*/
+	padding: 30px 10px; /*テーブルセル要素間隔*/
+}
+
+.center_screen-5 {
+	text-align: center; /*中央寄せ*/
+	margin-top: 5px; /*要素外側上部余白*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+.center_screen-5 table tr th {
+	text-align: left; /*テーブル見出し位置*/
+	padding: 10px 35px; /*テーブル見出し間隔*/
+}
+
+.center_screen-5 table tr td {
+	text-align: left; /*テーブルセル要素位置*/
+	padding: 10px 35px; /*テーブルセル要素間隔*/
+}
+
+.center_screen-6 {
+	margin: 0 auto; /*中央寄せ*/
+	text-align: center; /*中央寄せ*/
+	font-size: 17px; /*文字サイズ*/
+	position: relative; /*相対配置*/
+}
+
+.center_screen-6 table tr th {
+	text-align: left; /*左寄せ*/
+	padding: 17px 5px; /*テーブル見出し間隔*/
+}
+
+.center_screen-6 table tr td {
+	text-align: left; /*左寄せ*/
+	padding: 13px 0px; /*テーブルセル要素間隔*/
+}
+
+/*画面横並び*/
+.side_screen {
+	width: 100%; /*テーブル幅*/
+	height: 300px; /*テーブル高さ*/
+	display: flex; /*横並びにする*/
+	justify-content: center; /*水平方向の中央寄せ*/
+	align-items: center; /*垂直方向の中央寄せ*/
+}
+
+/*テーブル*/
+.border_table {
+	margin: 0 auto; /*中央寄せ*/
+	border-collapse: collapse; /*隣接するセルのボーダーを重ねて表示*/
+	border-spacing: 0; /*隣接するセルのボーダーの間隔指定*/
+	margin-bottom: 7px; /*要素外側下部余白*/
+}
+
+.border_table-2 {
+	width: 100%; /*テーブル幅*/
+	height: 100%; /*テーブル高さ*/
+	margin: 0 auto; /*中央寄せ*/
+	border-collapse: collapse; /*隣接するセルのボーダーを重ねて表示*/
+	border-spacing: 0; /*隣接するセルのボーダーの間隔指定*/
+	margin-bottom: 20px; /*要素外側下部余白*/
+}
+
+.border_table-3 {
+	table-layout: fixed; /*固定レイアウト*/
+	width: 600px; /*テーブル幅*/
+	margin: 0 auto; /*中央寄せ*/
+	text-align: center; /*中央寄せ*/
+	border-collapse: collapse; /*隣接するセルのボーダーを重ねて表示*/
+	margin-bottom: 15px; /*要素外側下部余白*/
+}
+
+.border_style {
+	border-bottom: solid 1px #eee; /*ボーダー設定*/
+}
+
+.fixed {
+	position: sticky; /*要素配置*/
+	top: 110px; /*上部位置指定*/ &: before { /*疑似要素*/ content : ""; /*挿入文字列*/
+	position: absolute; /*要素配置*/
+	top: -1px; /*上部位置指定*/
+	left: -1px; /*下部位置指定 */
+	width: 100%; /*幅*/
+	height: 100%; /*高さ*/
+}
+
+.fixed-2 {
+	position: sticky; /*要素配置*/
+	top: 180px; /*上部位置指定*/ &: before { /*疑似要素*/ content : ""; /*挿入文字列*/
+	position: absolute; /*要素配置*/
+	top: -1px; /*上部位置指定*/
+	left: -1px; /*下部位置指定 */
+	width: 100%; /*幅*/
+	height: 100%; /*高さ*/
+}
