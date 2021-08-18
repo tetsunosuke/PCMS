@@ -11,13 +11,14 @@ public class Admin implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/**
-	 *社員番号
+	 *社員ID
 	 */
-	int number;
+	int employee_id;
 
 	/**
 	 *姓
 	 */
+
 	private String last_name;
 
 	/**
@@ -36,19 +37,19 @@ public class Admin implements Serializable {
 	public Admin(){}
 
 	/**
-	 *@return number - 社員番号
-	 *社員番号を返す
+	 *@return employee_id - 社員ID
+	 *社員IDを返す
 	 */
-	public int getNumber(){
-		return number;
+	public int getEmployee_Id(){
+		return employee_id;
 	}
 
 	/**
-	 *@param number - 社員番号
-	 *社員番号のセット
+	 *@param employee_id - 社員ID
+	 *社員IDのセット
 	 */
-	public void setNumber(int number){
-		this.number = number;
+	public void setEmployee_Id(int employee_id){
+		this.employee_id = employee_id;
 	}
 
 	/**
@@ -68,19 +69,19 @@ public class Admin implements Serializable {
 	}
 
 	/**
-	 *@return firstName - 名
+	 *@return first_name - 名
 	 *名を返す
 	 */
-	public String getFirstName(){
-		return firstName;
+	public String getFirst_Name(){
+		return first_name;
 	}
 
 	/**
-	 *@param firstName - 名
+	 *@param first_name - 名
 	 *名のセット
 	 */
-	public void setFirstName(String firstName){
-		this.firstName = firstName;
+	public void setFirst_Name(String first_name){
+		this.first_name = first_name;
 	}
 
 	/**
