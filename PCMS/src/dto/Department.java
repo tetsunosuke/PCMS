@@ -11,9 +11,9 @@ public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/**
-	 *部署コード
+	 *部署ID
 	 */
-	private String department_code;
+	private String department_id;
 
 	/**
 	 *部署名
@@ -36,23 +36,23 @@ public class Department implements Serializable {
 	public Department(){}
 
 	/**
-	 *@return department_code - 部署コード
-	 *部署コードを返す
+	 *@return department_id - 部署ID
+	 *部署IDを返す
 	 */
-	public String getDepartment_Code(){
-		return department_code;
+	public String getDepartment_Id(){
+		return department_id;
 	}
 
 	/**
-	 *@param department_code - 部署コード
-	 *	部署コードのセット
+	 *@param department_Id - 部署ID
+	 *	部署IDのセット
 	 */
-	public void setDepartment_Code(String department_code){
-		this.department_code = department_code;
+	public void setDepartment_Id(String department_id){
+		this.department_id = department_id;
 	}
 
 	/**
-	 *@return department_code - 部署名
+	 *@return department_name - 部署名
 	 *部署名を返す
 	 */
 	public String getDepartment_Name(){
