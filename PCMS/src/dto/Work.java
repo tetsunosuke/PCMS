@@ -12,9 +12,9 @@ public class Work implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 *部署コード
+	 *部署ID
 	 */
-	private String department_code;
+	private String department_id;
 
 	/**
 	 *作業内容
@@ -27,19 +27,19 @@ public class Work implements Serializable {
 	public Work(){}
 
 	/**
-	 *@return department_code - 部署コード
-	 *部署コードを返す
+	 *@return department_id - 部署ID
+	 *部署IDを返す
 	 */
-	public String getDepartment_Code(){
-		return department_code;
+	public String getDepartment_Id(){
+		return department_id;
 	}
 
 	/**
-	 *@param department_code - 部署コード
-	 *部署コードのセット
+	 *@param department_id - 部署ID
+	 *部署IDのセット
 	 */
-	public void setDepartment_Code(String department_code){
-		this.department_code = department_code;
+	public void setDepartment_Id(String department_id){
+		this.department_id = department_id;
 	}
 
 	/**
