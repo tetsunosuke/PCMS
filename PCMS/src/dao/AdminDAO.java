@@ -47,23 +47,23 @@ public class AdminDAO {
 	}
 
 	/**
-	 *@param number 社員番号
-	 *@param admin_password 社員パスワード
+	 *@param employee_id 社員ID
+	 *@param admin_password 管理者パスワード
 	 *@return 管理者情報を返す
 	 *@throws SQLException データベース接続処理でエラー
 	 *管理者ログインメソッド
 	 */
-	public Admin loginAdmin(int number,String admin_password) throws SQLException{
+	public Admin loginAdmin(int employee_id,String admin_password) throws SQLException{
 
 		//初期化
 		Admin admin = null;
 
 		//データベースから管理者情報を取得するSQL文
-		String sql ="select * from db_admin where number = ? and admin_password = ?";
+		String sql ="select * from admins where employeee_id = ? and admin_password = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		ps.setInt(1,number);
+		ps.setInt(1,employee_id);
 		ps.setString(2,admin_password);
 
 		//SQL文の実行
@@ -74,12 +74,12 @@ public class AdminDAO {
 			//データベースから取得した値をセット
 			admin = new Admin();
 
-			//社員番号
-			admin.setNumber(rs.getInt(1));
+			//社員ID
+			admin.setEmployee_Id(rs.getInt(1));
 			//姓
-			admin.setLastName(rs.getString(2));
+			admin.setLast_Name(rs.getString(2));
 			//名
-			admin.setFirstName(rs.getString(3));
+			admin.setFirst_Name(rs.getString(3));
 			//管理者パスワード
 			admin.setAdmin_Password(rs.getString(4));
 		}
@@ -115,15 +115,15 @@ public class AdminDAO {
 	}
 
 	/**
-	 *@param number 社員番号
-	 *@param lastName 姓
-	 *@param firstName 名
+	 *@param employee_id 社員ID
+	 *@param last_name 姓
+	 *@param first_name 名
 	 *@param admin_password 管理者パスワード
 	 *@return 管理者権限を付与出来たらtrue,出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *管理者権限を付与するメソッド
 	 */
-	public boolean registAdmin(int number,String lastName,String firstName,String admin_password) throws SQLException{
+	public boolean registAdmin(int employee_id,String last_name,String first_name,String admin_password) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
@@ -132,16 +132,16 @@ public class AdminDAO {
 		boolean registJudge = false;
 
 		//データベースに管理者権限を登録するSQL文
-		String sql = "insert into db_admin(number,lastName,firstName,admin_password) values (?,?,?,?)";
+		String sql = "insert into admins (employee_id,last_name,first_name,admin_password) values (?,?,?,?)";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		//社員番号
-		ps.setInt(1,number);
+		//社員ID
+		ps.setInt(1,employee_id);
 		//姓
-		ps.setString(2,lastName);
+		ps.setString(2,last_name);
 		//名
-		ps.setString(3,firstName);
+		ps.setString(3,first_name);
 		//管理者パスワード
 		ps.setString(4,admin_password);
 
@@ -157,26 +157,26 @@ public class AdminDAO {
 	}
 
 	/**
-	 *@param number 社員番号
+	 *@param employee_id 社員ID
 	 *@return 管理者権限を削除出来たらtrue,出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *管理者権限を削除するメソッド
 	 */
-	public boolean deleteAdmin(int number) throws SQLException{
+	public boolean deleteAdmin(int employee_id) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
 
 		//データベースから指定した管理者を削除するSQL文
-		String sql = "delete from db_admin where number = ?";
+		String sql = "delete from admins where employee_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//削除判定
 		boolean deleteJudge = false;
 
 		//プレースホルダに値をセット
-		//社員番号
-		ps.setInt(1,number);
+		//社員ID
+		ps.setInt(1,employee_id);
 
 		//SQL文の実行
 		int da = ps.executeUpdate();
@@ -222,17 +222,17 @@ public class AdminDAO {
 	}
 
 	/**
-	 *@return 管理者ゲストユーザー情報を返す
+	 *@return 管理者ゲスト情報を返す
 	 *@throws SQLException データベース接続処理でエラー
-	 *管理者ゲストユーザーログインメソッド
+	 *管理者ゲストログインメソッド
 	 */
 	public Admin loginGuestAdmin() throws SQLException{
 
 		//初期化
 		Admin admin = null;
 
-		//データベースから管理者ゲストユーザー情報を取得するSQL文
-		String sql ="select * from db_admin where number = 0";
+		//データベースから管理者ゲスト情報を取得するSQL文
+		String sql ="select * from admins where number = 0";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -243,12 +243,12 @@ public class AdminDAO {
 			//データベースから取得した値をセット
 			admin = new Admin();
 
-			//社員番号
-			admin.setNumber(rs.getInt(1));
+			//社員ID
+			admin.setEmployee_Id(rs.getInt(1));
 			//姓
-			admin.setLastName(rs.getString(2));
+			admin.setLast_Name(rs.getString(2));
 			//名
-			admin.setFirstName(rs.getString(3));
+			admin.setFirst_Name(rs.getString(3));
 			//管理者パスワード
 			admin.setAdmin_Password(rs.getString(4));
 		}
