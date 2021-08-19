@@ -66,7 +66,7 @@ public class MachineDAO {
 		Machine machine = null;
 
 		//データベースから指定した機械情報を取得するSQL文
-		String sql ="select * from db_machine where machine_number = ?";
+		String sql ="select * from machines where machine_number = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
@@ -106,7 +106,7 @@ public class MachineDAO {
 		boolean addJudge = false;
 
 		//データベースに新規登録するSQL文
-		String sql = "insert into db_machine(machine_number,machine_name) values (?,?)";
+		String sql = "insert into machines (machine_number,machine_name) values (?,?)";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
@@ -138,7 +138,7 @@ public class MachineDAO {
 		con.setAutoCommit(false);
 
 		//データベースから機械情報を削除するSQL文
-		String sql = "delete from db_machine where machine_name = ?";
+		String sql = "delete from machines where machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//削除判定
@@ -167,7 +167,7 @@ public class MachineDAO {
 	public List<Machine> showAllMachine() throws SQLException{
 
 		//データベースから全機械番号、機械名を取得するSQL文
-		String sql ="select machine_number,machine_name from db_machine";
+		String sql ="select machine_number,machine_name from machines";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -201,7 +201,7 @@ public class MachineDAO {
 		con.setAutoCommit(false);
 
 		//機械別工数合計時間を計算するSQL文
-		String sql = "update db_machine set machine_hours = (select sum(work_time) + sum(over_time) + sum(holiday_work) from db_report where machine_name = ? group by machine_number) where machine_name = ?";
+		String sql = "update machines set machine_hours = (select sum(work_time) + sum(over_time) + sum(holiday_work) from reports where machine_name = ? group by machine_number) where machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
@@ -227,7 +227,7 @@ public class MachineDAO {
 	public Machine getMachineHours(Machine machine) throws SQLException{
 
 		//データベースから更新したデータを取得するSQL文
-		String sql ="select machine_hours from db_machine where machine_name = ?";
+		String sql ="select machine_hours from machines where machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
