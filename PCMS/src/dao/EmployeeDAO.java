@@ -54,23 +54,23 @@ public class EmployeeDAO {
 	private List<Employee> elist = new ArrayList<>();
 
 	/**
-	 *@param number 社員番号
+	 *@param employee_id 社員ID
 	 *@param employee_password 社員パスワード
 	 *@return ログインした社員情報を返す
 	 *@throws SQLException データベース接続処理でエラー
 	 *社員ログインメソッド
 	 */
-	public Employee loginEmployee(int number,String employee_password) throws SQLException{
+	public Employee loginEmployee(int employee_id,String employee_password) throws SQLException{
 
 		//初期化
 		Employee employee = null;
 
 		//データベースからログインした社員情報を取得するSQL文
-		String sql ="select * from db_employee where number = ? and employee_password = ?";
+		String sql ="select * from employees where employee_id = ? and employee_password = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		ps.setInt(1,number);
+		ps.setInt(1,employee_id);
 		ps.setString(2,employee_password);
 
 		//SQL文の実行
@@ -81,26 +81,26 @@ public class EmployeeDAO {
 			//データベースから取得した値をセット
 			 employee = new Employee();
 
-			//社員番号
-			employee.setNumber(rs.getInt("number"));
+			//社員ID
+			employee.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			employee.setLastName(rs.getString("lastName"));
+			employee.setLast_Name(rs.getString("last_name"));
 			//名
-			employee.setFirstName(rs.getString("firstName"));
+			employee.setFirst_Name(rs.getString("first_name"));
 			//姓フリガナ
-			employee.setLastKana(rs.getString("lastKana"));
+			employee.setLast_Kana(rs.getString("last_kana"));
 			//名フリガナ
-			employee.setFirstKana(rs.getString("firstKana"));
+			employee.setFirst_Kana(rs.getString("first_kana"));
 			//部署名
 			employee.setDepartment_Name(rs.getString("department_name"));
-			//部署コード
-			employee.setDepartment_Code(rs.getString("department_code"));
+			//部署ID
+			employee.setDepartment_Id(rs.getString("department_id"));
 			//血液型
 			employee.setBlood(rs.getString("blood"));
 			//年齢
 			employee.setAge(rs.getInt("age"));
 			//生年月日
-			employee.setBirthDay(rs.getString("birthDay"));
+			employee.setBirthday(rs.getString("birthday"));
 			//性別
 			employee.setGender(rs.getString("gender"));
 			//パスワード
@@ -110,36 +110,36 @@ public class EmployeeDAO {
 	}
 
 	/**
-	 *@return 新規社員番号を返す
+	 *@return 新規社員IDを返す
 	 *@throws SQLException データベース接続処理でエラー
-	 *新規登録画面に社員番号を自動表示するメソッド
+	 *新規登録画面に社員IDを自動表示するメソッド
 	 */
-	public Employee numberAutoDisplay() throws SQLException{
+	public Employee IdAutoDisplay() throws SQLException{
 
 		//初期化
 		Employee employee = null;
 
-		//データべ―スに新規社員番号を登録するSQL文
-		String sql = "select max(number) from db_employee";
+		//データべ―スに新規社員IDを登録するSQL文
+		String sql = "select max(employee_id) from employees";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
 		rs = ps.executeQuery();
 
-		//社員番号新規登録
+		//社員ID新規登録
 		if(rs.next()){
 			employee = new Employee();
-			employee.setNumber(rs.getInt(1) + 1);
+			employee.setEmployee_Id(rs.getInt(1) + 1);
 		}
 		return employee;
 	}
 
 	/**
-	 *@param number 社員番号
-	 *@param lastName 姓
-	 *@param firstName 名
-	 *@param lastKana 姓カナ
-	 *@param firstKana 名カナ
+	 *@param employee_id 社員ID
+	 *@param last_name 姓
+	 *@param first_name 名
+	 *@param last_kana 姓カナ
+	 *@param first_kana 名カナ
 	 *@param department_name 部署名
 	 *@param blood 血液型
 	 *@param employee_password 社員パスワード
@@ -147,7 +147,7 @@ public class EmployeeDAO {
 	 *@throws SQLException  データベース接続処理でエラー
 	 *新規社員登録メソッド
 	 */
-	public boolean registEmployee(int number,String lastName,String firstName,String lastKana,String firstKana,String department_name,String blood,String employee_password) throws SQLException{
+	public boolean registEmployee(int employee_id,String last_name,String first_name,String last_kana,String first_kana,String department_name,String blood,String employee_password) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
@@ -155,8 +155,8 @@ public class EmployeeDAO {
 		//オブジェクトの生成
 		Employee employee = new Employee();
 
-		//データベースに部署コードを登録するSQL文
-		String sql1 = "select department_code from db_department where department_name = ?";
+		//データベースに部署IDを登録するSQL文
+		String sql1 = "select department_id from departments where department_name = ?";
 		ps = con.prepareStatement(sql1);
 
 		//部署名
@@ -165,33 +165,33 @@ public class EmployeeDAO {
 		//SQL文の実行
 		rs = ps.executeQuery();
 
-		//部署コード新規登録
+		//部署ID登録
 		if(rs.next()){
-			employee.setDepartment_Code(rs.getString("department_code"));
+			employee.setDepartment_Id(rs.getString("department_id"));
 		}
 
 		//社員登録判定
 		boolean registJudge = false;
 
 		//データベースに新規社員登録するSQL文
-		String sql2 = "insert into db_employee(number,lastName,firstName,lastKana,firstKana,department_name,department_code,blood,employee_password) values (?,?,?,?,?,?,?,?,?)";
+		String sql2 = "insert into employees (employee_id,last_name,first_name,last_kana,first_kana,department_name,department_id,blood,employee_password) values (?,?,?,?,?,?,?,?,?)";
 		ps = con.prepareStatement(sql2);
 
 		//プレースホルダに値をセット
-		//社員番号
-		ps.setInt(1,number);
+		//社員ID
+		ps.setInt(1,employee_id);
 		//姓
-		ps.setString(2,lastName);
+		ps.setString(2,last_name);
 		//名
-		ps.setString(3,firstName);
+		ps.setString(3,first_name);
 		//姓フリガナ
-		ps.setString(4,lastKana);
+		ps.setString(4,last_kana);
 		//名フリガナ
-		ps.setString(5,firstKana);
+		ps.setString(5,first_kana);
 		//部署名
 		ps.setString(6,department_name);
-		//部署コード
-		ps.setString(7,employee.getDepartment_Code());
+		//部署ID
+		ps.setString(7,employee.getDepartment_Id());
 		//血液型
 		ps.setString(8,blood);
 		//パスワード
@@ -223,18 +223,18 @@ public class EmployeeDAO {
 		con.setAutoCommit(false);
 
 		//データベースの社員情報を更新するSQL文
-		String sql = "update db_employee set lastName = ?,firstName = ?,lastKana = ?,firstKana = ?,department_name = ?,blood = ?,age = ?,gender = ?,birthDay = ? where number = ?";
+		String sql = "update employees set last_name = ?,first_name = ?,last_kana = ?,first_kana = ?,department_name = ?,blood = ?,age = ?,gender = ?,birthday = ? where employee_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
 		//姓
-		ps.setString(1,employee.getLastName());
+		ps.setString(1,employee.getLast_Name());
 		//名
-		ps.setString(2,employee.getFirstName());
+		ps.setString(2,employee.getFirst_Name());
 		//姓フリガナ
-		ps.setString(3,employee.getLastKana());
+		ps.setString(3,employee.getLast_Kana());
 		//名フリガナ
-		ps.setString(4,employee.getFirstKana());
+		ps.setString(4,employee.getFirst_Kana());
 		//部署名
 		ps.setString(5,employee.getDepartment_Name());
 		//血液型
@@ -244,9 +244,9 @@ public class EmployeeDAO {
 		//性別
 		ps.setString(8,employee.getGender());
 		//生年月日
-		ps.setString(9,employee.getBirthDay());
+		ps.setString(9,employee.getBirthday());
 		//社員番号
-		ps.setInt(10,employee.getNumber());
+		ps.setInt(10,employee.getEmployee_Id());
 
 		//SQL文の実行
 		int ue = ps.executeUpdate();
@@ -259,26 +259,26 @@ public class EmployeeDAO {
 	}
 
 	/**
-	 *@param number 社員番号
+	 *@param employee_id 社員ID
 	 *@return 選択した社員を削除出来たらtrue、出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *社員を削除するメソッド
 	 */
-	public boolean deleteEmployee(int number) throws SQLException{
+	public boolean deleteEmployee(int employee_id) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
 
 		//データベースから社員を削除するSQL文
-		String sql = "delete from db_employee where number = ?";
+		String sql = "delete from employees where employee_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//削除判定
 		boolean deleteJudge = false;
 
 		//プレースホルダに値をセット
-		//社員番号
-		ps.setInt(1,number);
+		//社員ID
+		ps.setInt(1,employee_id);
 
 		//SQL文の実行
 		int de = ps.executeUpdate();
@@ -292,22 +292,22 @@ public class EmployeeDAO {
 	}
 
 	/**
-	 *@param number 社員番号
+	 *@param employee_id 社員ID
 	 *@return 選択した社員情報を返す
 	 *@throws SQLException データベース接続処理でエラー
 	 *選択した社員情報を探すメソッド
 	 */
-	public Employee selectEmployee(int number) throws SQLException{
+	public Employee selectEmployee(int employee_id) throws SQLException{
 
 		//初期化
 		Employee employee = null;
 
 		//データベースから社員情報を取得するSQL文
-		String sql ="select * from db_employee where number = ?";
+		String sql ="select * from employees where employee_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		ps.setInt(1,number);
+		ps.setInt(1,employee_id);
 
 		//SQL文の実行
 		rs = ps.executeQuery();
@@ -317,26 +317,26 @@ public class EmployeeDAO {
 			//データベースから取得した値をセット
 			employee = new Employee();
 
-			//社員番号
-			employee.setNumber(rs.getInt("number"));
+			//社員ID
+			employee.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			employee.setLastName(rs.getString("lastName"));
+			employee.setLast_Name(rs.getString("last_name"));
 			//名
-			employee.setFirstName(rs.getString("firstName"));
+			employee.setFirst_Name(rs.getString("first_name"));
 			//姓フリガナ
-			employee.setLastKana(rs.getString("lastKana"));
+			employee.setLast_Kana(rs.getString("last_kana"));
 			//名フリガナ
-			employee.setFirstKana(rs.getString("firstKana"));
+			employee.setFirst_Kana(rs.getString("first_kana"));
 			//部署名
 			employee.setDepartment_Name(rs.getString("department_name"));
-			//部署コード
-			employee.setDepartment_Code(rs.getString("department_code"));
+			//部署ID
+			employee.setDepartment_Id(rs.getString("department_id"));
 			//血液型
 			employee.setBlood(rs.getString("blood"));
 			//年齢
 			employee.setAge(rs.getInt("age"));
 			//生年月日
-			employee.setBirthDay(rs.getString("birthDay"));
+			employee.setBirthday(rs.getString("birthday"));
 			//性別
 			employee.setGender(rs.getString("gender"));
 			//パスワード
@@ -356,7 +356,7 @@ public class EmployeeDAO {
 		Employee employee = null;
 
 		//データベースから全社員情報を取得するSQL文
-		String sql ="select number,lastName,firstName,lastKana,firstKana,department_name,blood,age,birthDay,gender from db_employee order by number";
+		String sql ="select employee_id,last_name,first_name,last_kana,first_kana,department_name,blood,age,birthday,gender from employees order by employee_id";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -367,16 +367,16 @@ public class EmployeeDAO {
 			//データベースから取得した値をセット
 			employee = new Employee();
 
-			//社員番号
-			employee.setNumber(rs.getInt("number"));
+			//社員ID
+			employee.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			employee.setLastName(rs.getString("lastName"));
+			employee.setLast_Name(rs.getString("last_name"));
 			//名
-			employee.setFirstName(rs.getString("firstName"));
+			employee.setFirst_Name(rs.getString("first_name"));
 			//姓フリガナ
-			employee.setLastKana(rs.getString("lastKana"));
+			employee.setLast_Kana(rs.getString("last_kana"));
 			//名フリガナ
-			employee.setFirstKana(rs.getString("firstKana"));
+			employee.setFirst_Kana(rs.getString("first_kana"));
 			//部署名
 			employee.setDepartment_Name(rs.getString("department_name"));
 			//血液型
@@ -384,7 +384,7 @@ public class EmployeeDAO {
 			//年齢
 			employee.setAge(rs.getInt("age"));
 			//生年月日
-			employee.setBirthDay(rs.getString("birthDay"));
+			employee.setBirthday(rs.getString("birthday"));
 			//性別
 			employee.setGender(rs.getString("gender"));
 
@@ -395,12 +395,12 @@ public class EmployeeDAO {
 
 	/**
 	 *@param employee_password 社員パスワード
-	 *@param number 社員番号
+	 *@param employee_id 社員ID
 	 *@return パスワード変更出来たらtrue,出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *社員パスワード変更メソッド
 	 */
-	public boolean changeEmployeePassword(String employee_password,int number) throws SQLException{
+	public boolean changeEmployeePassword(String employee_password,int employee_id) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
@@ -409,12 +409,12 @@ public class EmployeeDAO {
 		boolean changeJudge = false;
 
 		//データベースのパスワードを変更するSQL文
-		String sql ="update db_employee set employee_password = ? where number = ?";
+		String sql ="update employees set employee_password = ? where employee_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
 		ps.setString(1,employee_password);
-		ps.setInt(2,number);
+		ps.setInt(2,employee_id);
 
 		//SQL文の実行
 		int cp = ps.executeUpdate();
@@ -428,8 +428,7 @@ public class EmployeeDAO {
 	}
 
 	/**
-	 *@param number 社員番号
-	 *@return ログインした社員情報を返す
+	 *@return ゲストログインした社員情報を返す
 	 *@throws SQLException データベース接続処理でエラー
 	 *ゲストログインメソッド
 	 */
@@ -439,7 +438,7 @@ public class EmployeeDAO {
 		Employee employee = null;
 
 		//データベースからゲスト情報を取得するSQL文
-		String sql ="select * from db_employee where number = 0";
+		String sql ="select * from employees where number = 0";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -448,28 +447,28 @@ public class EmployeeDAO {
 		if(rs.next()){
 
 			//データベースから取得した値をセット
-			 employee = new Employee();
+			employee = new Employee();
 
-			//社員番号
-			employee.setNumber(rs.getInt("number"));
+			//社員ID
+			employee.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			employee.setLastName(rs.getString("lastName"));
+			employee.setLast_Name(rs.getString("last_name"));
 			//名
-			employee.setFirstName(rs.getString("firstName"));
+			employee.setFirst_Name(rs.getString("first_name"));
 			//姓フリガナ
-			employee.setLastKana(rs.getString("lastKana"));
+			employee.setLast_Kana(rs.getString("last_kana"));
 			//名フリガナ
-			employee.setFirstKana(rs.getString("firstKana"));
+			employee.setFirst_Kana(rs.getString("first_kana"));
 			//部署名
 			employee.setDepartment_Name(rs.getString("department_name"));
 			//部署コード
-			employee.setDepartment_Code(rs.getString("department_code"));
+			employee.setDepartment_Id(rs.getString("department_id"));
 			//血液型
 			employee.setBlood(rs.getString("blood"));
 			//年齢
 			employee.setAge(rs.getInt("age"));
 			//生年月日
-			employee.setBirthDay(rs.getString("birthDay"));
+			employee.setBirthday(rs.getString("birthday"));
 			//性別
 			employee.setGender(rs.getString("gender"));
 			//パスワード
