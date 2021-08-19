@@ -67,7 +67,7 @@ public class DepartmentDAO {
 		Department department = null;
 
 		//データベースから部署情報を取得するSQL文
-		String sql ="select * from db_department where department_name = ? and machine_name = ?";
+		String sql ="select * from departments where department_name = ? and machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
@@ -86,8 +86,8 @@ public class DepartmentDAO {
 
 			//部署名
 			department.setDepartment_Name(rs.getString("department_name"));
-			//部署コード
-			department.setDepartment_Code(rs.getString("department_code"));
+			//部署ID
+			department.setDepartment_Id(rs.getString("department_id"));
 			//機械名
 			department.setMachine_Name(rs.getString("machine_name"));
 			//部署別工数合計時間
@@ -105,7 +105,7 @@ public class DepartmentDAO {
 	public List<Department> getDepartment(String machine_name) throws SQLException{
 
 		//データベースから部署情報を取得するSQL文
-		String sql ="select distinct department_code,department_name,machine_name from db_department where machine_name = ?";
+		String sql ="select distinct department_id,department_name,machine_name from departments where machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
@@ -120,8 +120,8 @@ public class DepartmentDAO {
 			//データベースから取得した値をセット
 			Department department = new Department();
 
-			//部署コード
-			department.setDepartment_Code(rs.getString("department_code"));
+			//部署ID
+			department.setDepartment_Id(rs.getString("department_id"));
 			//部署名
 			department.setDepartment_Name(rs.getString("department_name"));
 			//機械名
@@ -133,14 +133,14 @@ public class DepartmentDAO {
 	}
 
 	/**
-	 *@param department_code 部署コード
+	 *@param department_id 部署ID
 	 *@param department_name 部署名
 	 *@param machine_name 機械名
 	 *@return 部署テーブルに追加登録出来たらtrue,出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *部署テーブルに機械情報を登録するメソッド
 	 */
-	public boolean addDepartment(String department_code,String department_name,String machine_name) throws SQLException{
+	public boolean addDepartment(String department_id,String department_name,String machine_name) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
@@ -149,12 +149,12 @@ public class DepartmentDAO {
 		boolean addJudge = false;
 
 		//データベースに機械情報を登録するSQL文
-		String sql ="insert into db_department (department_code,department_name,machine_name) values (?,?,?)";
+		String sql ="insert into departments (department_id,department_name,machine_name) values (?,?,?)";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		//部署コード
-		ps.setString(1,department_code);
+		//部署ID
+		ps.setString(1,department_id);
 		//部署名
 		ps.setString(2,department_name);
 		//機械名
@@ -179,7 +179,7 @@ public class DepartmentDAO {
 	public List<Department> showAllDepartment() throws SQLException{
 
 		//データベースから全部署情報を取得するSQL文
-		String sql ="select distinct department_code,department_name from db_department order by department_code";
+		String sql ="select distinct department_id,department_name from departments order by department_id";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -192,8 +192,8 @@ public class DepartmentDAO {
 
 			//部署名の取得
 			department.setDepartment_Name(rs.getString("department_name"));
-			//部署コードの取得
-			department.setDepartment_Code(rs.getString("department_code"));
+			//部署IDの取得
+			department.setDepartment_Id(rs.getString("department_id"));
 
 			dlist.add(department);
 		}
@@ -213,16 +213,16 @@ public class DepartmentDAO {
 		con.setAutoCommit(false);
 
 		//部署別工数合計時間を計算するSQL文
-		String sql = "update db_department set department_hours = (select sum(work_time) + sum(over_time) + sum(holiday_work) from db_report where department_code = ? and machine_name = ? group by machine_name) where department_code = ? and machine_name = ?";
+		String sql = "update departments set department_hours = (select sum(work_time) + sum(over_time) + sum(holiday_work) from reports where department_id = ? and machine_name = ? group by machine_name) where department_id = ? and machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		//部署コード
-		ps.setString(1,report.getDepartment_Code());
+		//部署ID
+		ps.setString(1,report.getDepartment_Id());
 		//機械名
 		ps.setString(2,report.getMachine_Name());
-		//部署コード
-		ps.setString(3,department.getDepartment_Code());
+		//部署ID
+		ps.setString(3,department.getDepartment_Id());
 		//機械名
 		ps.setString(4,department.getMachine_Name());
 
@@ -245,12 +245,12 @@ public class DepartmentDAO {
 	public Department getDepartmentHours(Department department) throws SQLException{
 
 		//データベースから更新したデータを取得するSQL文
-		String sql ="select * from db_department where department_code = ? and  machine_name = ?";
+		String sql ="select * from departments where department_id = ? and  machine_name = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		//部署コード
-		ps.setString(1,department.getDepartment_Code());
+		//部署ID
+		ps.setString(1,department.getDepartment_Id());
 		//機械名
 		ps.setString(2,department.getMachine_Name());
 
@@ -259,8 +259,8 @@ public class DepartmentDAO {
 
 		if(rs.next()){
 
-			//部署コード
-			department.setDepartment_Code(rs.getString("department_code"));
+			//部署ID
+			department.setDepartment_Id(rs.getString("department_id"));
 			//部署名
 			department.setDepartment_Name(rs.getString("department_name"));
 			//機械名
