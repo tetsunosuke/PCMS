@@ -11,24 +11,24 @@ public class Report implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 *社員番号
+	 *社員ID
 	 */
-	private int number;
+	private int employee_id;
 
 	/**
 	 *姓
 	 */
-	private String lastName;
+	private String last_name;
 
 	/**
 	 *名
 	 */
-	private String firstName;
+	private String first_name;
 
 	/**
-	 *部署コード
+	 *部署ID
 	 */
-	private String department_code;
+	private String department_id;
 
 	/**
 	 *日付
@@ -71,65 +71,65 @@ public class Report implements Serializable {
 	public Report(){}
 
 	/**
-	 *@return number - 社員番号
-	 *社員番号を返す
+	 *@return number - 社員ID
+	 *社員IDを返す
 	 */
-	public int getNumber(){
-		return number;
+	public int getEmployee_Id(){
+		return employee_id;
 	}
 
 	/**
-	 *@param number - 社員番号
-	 *社員番号のセット
+	 *@param employee_id - 社員ID
+	 *社員IDのセット
 	 */
-	public void setNumber(int number){
-		this.number = number;
+	public void setEmployee_Id(int employee_id){
+		this.employee_id = employee_id;
 	}
 
 	/**
-	 *@return lastName - 姓
+	 *@return last_name - 姓
 	 *姓を返す
 	 */
-	public String getLastName(){
-		return lastName;
+	public String getLast_Name(){
+		return last_name;
 	}
 	/**
-	 *@param lastName - 姓
+	 *@param last_name - 姓
 	 *姓のセット
 	 */
-	public void setLastName(String lastName){
-		this.lastName = lastName;
+	public void setLast_Name(String last_name){
+		this.last_name = last_name;
 	}
 
 	/**
-	 *@return firstName - 名
+	 *@return first_name - 名
 	 *名を返す
 	 */
-	public String getFirstName(){
-		return firstName;
+	public String getFirst_Name(){
+		return first_name;
 	}
 
 	/**
-	 *@param firstName - 名
+	 *@param first_name - 名
 	 *名のセット
 	 */
-	public void setFirstName(String firstName){
-		this.firstName = firstName;
+	public void setFirst_Name(String first_name){
+		this.first_name = first_name;
 	}
 
 	/**
-	 *@return department_code - 部署コード
-	 *部署コードのセット
+	 *@return department_id - 部署ID
+	 *部署IDのセット
 	 */
-	public String getDepartment_Code(){
-		return department_code;
+	public String getDepartment_Id(){
+		return department_id;
 	}
 	/**
-	 *@param department_code - 部署コード
-	 *部署コードのセット
+	 *@param department_id - 部署ID
+	 *部署IDのセット
 	 */
-	public void setDepartment_Code(String department_code){
-		this.department_code = department_code;
+	public void setDepartment_Id(String department_id){
+		this.department_id = department_id;
 	}
 
 	/**
