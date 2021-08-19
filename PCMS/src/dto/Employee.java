@@ -103,7 +103,7 @@ public class Employee implements Serializable {
 	 *@param last_name - 姓
 	 *姓のセット
 	 */
-	public void setLast_Name(String last_Name){
+	public void setLast_Name(String last_name){
 		this.last_name = last_name;
 	}
 
@@ -135,7 +135,7 @@ public class Employee implements Serializable {
 	 *@param last_kana - 姓フリガナ
 	 *姓フリガナを返す
 	 */
-	public void setLast_Kana(String last_Kana){
+	public void setLast_Kana(String last_kana){
 		this.last_kana = last_kana;
 	}
 
@@ -182,7 +182,7 @@ public class Employee implements Serializable {
 	 *@param department_id - 部署ID
 	 *部署IDのセット
 	 */
-	public void setDepartment_Id(String department_Id){
+	public void setDepartment_Id(String department_id){
 		this.department_id = department_id;
 	}
 
