@@ -64,7 +64,7 @@ public class Admin implements Serializable {
 	 *@param last_name - 姓
 	 *姓のセット
 	 */
-	public void setLast_name(String last_name){
+	public void setLast_Name(String last_name){
 		this.last_name = last_name;
 	}
 
