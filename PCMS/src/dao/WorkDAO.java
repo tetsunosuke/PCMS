@@ -54,22 +54,22 @@ public class WorkDAO {
 	private List<Work> wlist = new ArrayList<>();
 
 	/**
-	 *@param department_code 部署コード
+	 *@param department_id 部署ID
 	 *@return List<Work> 作業項目一覧
 	 *@throws SQLException データベース接続処理でエラー
 	 *部署毎の作業項目を取得するメソッド
 	 */
-	public List<Work> selectTask(String department_code) throws SQLException{
+	public List<Work> selectTask(String department_id) throws SQLException{
 
 		//初期化
 		Work work = null;
 
 		//データベースから部署毎の作業内容を取得するSQL文
-		String sql ="select * from db_work where department_code = ?";
+		String sql ="select * from works where department_id = ?";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		ps.setString(1,department_code);
+		ps.setString(1,department_id);
 
 		//SQL文の実行
 		rs = ps.executeQuery();
@@ -79,8 +79,8 @@ public class WorkDAO {
 			//データベースから取得した値をセット
 			work = new Work();
 
-			//部署コード
-			work.setDepartment_Code(rs.getString(1));
+			//部署ID
+			work.setDepartment_Id(rs.getString(1));
 			//作業内容
 			work.setTask(rs.getString(2));
 
@@ -90,13 +90,13 @@ public class WorkDAO {
 	}
 
 	/**
-	 *@param department_code	部署コード
+	 *@param department_id	部署ID
 	 *@param task	作業項目
 	 *@return データベースに作業項目を追加登録出来たらtrue,出来なかったらfalse
 	 *@throws SQLException データベース接続処理でエラー
 	 *作業項目を追加登録するメソッド
 	 */
-	public boolean addTask(String department_code,String task) throws SQLException{
+	public boolean addTask(String department_id,String task) throws SQLException{
 
 		//オートコミットの無効
 		con.setAutoCommit(false);
@@ -105,12 +105,12 @@ public class WorkDAO {
 		boolean addJudge = false;
 
 		//データベースに作業内容を追加登録するSQL文
-		String sql = "insert into db_work(department_code,task) values (?,?)";
+		String sql = "insert into db_works (department_id,task) values (?,?)";
 		ps = con.prepareStatement(sql);
 
 		//プレースホルダに値をセット
-		//部署コード
-		ps.setString(1,department_code);
+		//部署ID
+		ps.setString(1,department_id);
 		//作業内容
 		ps.setString(2,task);
 
@@ -137,7 +137,7 @@ public class WorkDAO {
 		con.setAutoCommit(false);
 
 		//データベースから作業項目を削除するSQL文
-		String sql = "delete from db_work where task = ?";
+		String sql = "delete from works where task = ?";
 		ps = con.prepareStatement(sql);
 
 		//削除判定
