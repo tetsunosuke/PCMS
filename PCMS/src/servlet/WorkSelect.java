@@ -50,9 +50,9 @@ public class WorkSelect extends HttpServlet{
 		//セッションオブジェクトの開始
 		HttpSession session = request.getSession();
 
-		//部署コードを取得
+		//部署IDを取得
 		Employee syain = (Employee)session.getAttribute("employee");
-		String department_code = syain.getDepartment_Code();
+		String department_id = syain.getDepartment_Id();
 
 		//作業項目検索準備
 		WorkDAO wd = new WorkDAO();
@@ -63,7 +63,7 @@ public class WorkSelect extends HttpServlet{
 			wd.dbConnect();
 
 			//該当部署の作業項目取得
-			wlist = wd.selectTask(department_code);
+			wlist = wd.selectTask(department_id);
 
 			//セッションスコープに保存
 			session.setAttribute("wlist",wlist);
