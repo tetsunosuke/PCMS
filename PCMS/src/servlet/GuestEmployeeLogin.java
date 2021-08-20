@@ -48,8 +48,8 @@ public class GuestEmployeeLogin extends HttpServlet{
 		//セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 
-		//ゲスト社員番号
-		int number = 0;
+		//ゲスト社員ID
+		int employee_id = 0;
 
 		//ゲストログイン準備
 		EmployeeDAO ed = new EmployeeDAO();
@@ -64,7 +64,7 @@ public class GuestEmployeeLogin extends HttpServlet{
 
 			//セッションスコープに保存
 			session.setAttribute("employee",employee);
-			session.setAttribute("number",number);
+			session.setAttribute("employee_id",employee_id);
 
 		}catch (SQLException e){
 			e.printStackTrace();
@@ -80,7 +80,7 @@ public class GuestEmployeeLogin extends HttpServlet{
 		}
 
 		if(employee != null ){
-			//ゲストログイン
+			//ゲストログイン成功
 			RequestDispatcher disp = request.getRequestDispatcher("./WorkSelect");
 			disp.forward(request, response);
 		}else{
