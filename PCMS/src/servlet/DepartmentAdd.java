@@ -48,10 +48,10 @@ public class DepartmentAdd extends HttpServlet{
 
 		//ログイン中の社員情報を取得
 		Employee syain = (Employee)session.getAttribute("employee");
-		//社員番号
-		int number = syain.getNumber();
-		//部署コード
-		String department_code = syain.getDepartment_Code();
+		//社員ID
+		int employee_id = syain.getEmployee_Id();
+		//部署ID
+		String department_id = syain.getDepartment_Id();
 		//部署名
 		String department_name = syain.getDepartment_Name();
 
@@ -66,7 +66,7 @@ public class DepartmentAdd extends HttpServlet{
 		boolean addJudge = false;
 
 		//ゲストユーザーの場合、登録不可
-		if(number == 0){
+		if(employee_id == 0){
 			RequestDispatcher disp = request.getRequestDispatcher("not_regist_guest.jsp");
 			disp.forward(request, response);
 			return;
@@ -77,7 +77,7 @@ public class DepartmentAdd extends HttpServlet{
 			dd.dbConnect();
 
 			//機械名の追加登録
-			addJudge = dd.addDepartment(department_code,department_name,machine_name);
+			addJudge = dd.addDepartment(department_id,department_name,machine_name);
 
 		}catch (SQLException e){
 			e.printStackTrace();
