@@ -53,12 +53,12 @@ public class AdminRegister extends HttpServlet{
 		String admin_password = manager.getAdmin_Password();
 
 		//管理者登録画面から登録情報の取得
-		//社員番号
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員ID
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//姓
-		String lastName = request.getParameter("lastName");
+		String last_name = request.getParameter("last_name");
 		//名
-		String firstName = request.getParameter("firstName");
+		String first_name = request.getParameter("first_name");
 		//入力した管理者パスワードの取得
 		String input_admin_password = request.getParameter("input_admin_password");
 
@@ -80,7 +80,7 @@ public class AdminRegister extends HttpServlet{
 			ad.dbConnect();
 
 			//管理者としてデータベースに新規登録
-			registJudge = ad.registAdmin(number,lastName, firstName,admin_password);
+			registJudge = ad.registAdmin(employee_id,last_name, first_name,admin_password);
 
 		}catch (SQLException e){
 			e.printStackTrace();
