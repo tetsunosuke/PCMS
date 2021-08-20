@@ -52,7 +52,7 @@ public class EmployeePasswordChange extends HttpServlet{
 	*@throws IOException ServletがPostリクエストを処理中に入出力エラーが発生
 	*新しい社員パスワードをnull,未入力,正規表現でチェックする。<br>
 	*問題なければ新しい社員パスワードとして変更する。<br>
-	*社員パスワード変更画面へ画面偏移する。
+	*社員パスワード変更完了画面へ画面偏移する。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
@@ -62,8 +62,8 @@ public class EmployeePasswordChange extends HttpServlet{
 		//ログインした社員情報の取得
 		Employee syain = (Employee)session.getAttribute("employee");
 
-		//社員番号の取得
-		int number = syain.getNumber();
+		//社員IDの取得
+		int employee_id = syain.getEmployee_Id();
 
 		//社員パスワードの取得
 		String employee_password = syain.getEmployee_Password();
@@ -173,7 +173,7 @@ public class EmployeePasswordChange extends HttpServlet{
 			employee_password = newPassword;
 
 			//データベースに新しいパスワードを変更登録
-			changeJudge = ed.changeEmployeePassword(employee_password,number);
+			changeJudge = ed.changeEmployeePassword(employee_password,employee_id);
 
 		}catch (SQLException e){
 			e.printStackTrace();
@@ -189,7 +189,7 @@ public class EmployeePasswordChange extends HttpServlet{
 		}
 
 		if(changeJudge) {
-			//パスワード変更
+			//パスワード変更成功
 			RequestDispatcher disp = request.getRequestDispatcher("password_change_succeed.jsp");
 			disp.forward(request, response);
 		}else{
