@@ -48,16 +48,16 @@ public class EmployeeUpd extends HttpServlet{
 		HttpSession session = request.getSession();
 
 		//マイページから編集した社員情報を取得
-		//社員番号
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員ID
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//姓
-		String lastName = request.getParameter("lastName");
+		String last_name = request.getParameter("last_name");
 		//名
-		String firstName = request.getParameter("firstName");
+		String first_name = request.getParameter("first_name");
 		//姓フリガナ
-		String lastKana = request.getParameter("lastKana");
+		String last_kana = request.getParameter("last_kana");
 		//名フリガナ
-		String firstKana = request.getParameter("firstKana");
+		String first_kana = request.getParameter("first_kana");
 		//部署名
 		String department_name = request.getParameter("department_name");
 		//血液型
@@ -67,7 +67,7 @@ public class EmployeeUpd extends HttpServlet{
 		//性別
 		String gender = request.getParameter("gender");
 		//生年月日
-		String birthDay = request.getParameter("birthDay");
+		String birthday = request.getParameter("birthday");
 
 		//セレクトボックス未選択でエラー
 		if(department_name == "" || blood == ""){
@@ -79,16 +79,16 @@ public class EmployeeUpd extends HttpServlet{
 		//編集した社員情報を社員表クラスにセット
 		Employee employee = new Employee();
 
-		//社員番号をセット
-		employee.setNumber(number);
+		//社員IDをセット
+		employee.setEmployee_Id(employee_id);
 		//姓をセット
-		employee.setLastName(lastName);
+		employee.setLast_Name(last_name);
 		//名をセット
-		employee.setFirstName(firstName);
+		employee.setFirst_Name(first_name);
 		//姓フリガナをセット
-		employee.setLastKana(lastKana);
+		employee.setLast_Kana(last_kana);
 		//名フリガナをセット
-		employee.setFirstKana(firstKana);
+		employee.setFirst_Kana(first_kana);
 		//部署名をセット
 		employee.setDepartment_Name(department_name);
 		//血液型をセット
@@ -96,7 +96,7 @@ public class EmployeeUpd extends HttpServlet{
 		//年齢をセット
 		employee.setAge(age);
 		//生年月日をセット
-		employee.setBirthDay(birthDay);
+		employee.setBirthday(birthday);
 		//性別をセット
 		employee.setGender(gender);
 
