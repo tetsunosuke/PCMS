@@ -16,7 +16,7 @@ import dto.Employee;
 
 /**
  *@author Akihiro Nakamura
- *新規社員番号自動表示クラス
+ *新規社員ID自動表示クラス
  */
 @WebServlet("/EmployeeIdAutoDisplay")
 public class EmployeeIdAutoDisplay extends HttpServlet{
