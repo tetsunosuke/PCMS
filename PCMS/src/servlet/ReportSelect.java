@@ -51,8 +51,8 @@ public class ReportSelect extends HttpServlet{
 
 		//選択した部署情報の取得
 		Department busho = (Department)session.getAttribute("department");
-		//選択した部署コードを取得
-		String department_code = busho.getDepartment_Code();
+		//選択した部署IDを取得
+		String department_id = busho.getDepartment_Id();
 		//選択した機械名を取得
 		String machine_name = busho.getMachine_Name();
 
@@ -65,7 +65,7 @@ public class ReportSelect extends HttpServlet{
 			rd.dbConnect();
 
 			//部署毎の工数記録検索
-			rlist = rd.eachReport(department_code,machine_name);
+			rlist = rd.eachReport(department_id,machine_name);
 
 			//セッションスコープに保存
 			session.setAttribute("rlist",rlist);
