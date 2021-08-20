@@ -14,7 +14,7 @@ import dao.MachineDAO;
 
 /**
  *@author Akihiro Nakamura
- *作業項目を削除するクラス
+ *登録機械情報を削除するクラス
  */
 @WebServlet("/MachineDelete")
 public class MachineDelete extends HttpServlet{
