@@ -16,7 +16,7 @@ import dto.Report;
 
 /**
  *@author Akihiro Nakamura
- *社員番号と日付から工数記録を検索するクラス
+ *社員IDと日付から工数記録を検索するクラス
  */
 @WebServlet("/ReportEachSelect")
 public class  ReportEachSelect extends HttpServlet{
@@ -39,7 +39,7 @@ public class  ReportEachSelect extends HttpServlet{
 	 *@param response Servletがクライアントに返すレスポンス内容を含むHttpServletResponseオブジェクト
 	 *@throws ServletException ServletがPostリクエストを処理中にServlet内で例外が発生
 	 *@throws IOException ServletがPostリクエストを処理中に入出力エラーが発生
-	 *データベースに接続して社員番号、日付から指定した工数記録を取得し、セッションにセットする。<br>
+	 *データベースに接続して社員ID、日付から指定した工数記録を取得し、セッションにセットする。<br>
 	 *特定の工数記録画面へ画面偏移する。
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,8 +47,8 @@ public class  ReportEachSelect extends HttpServlet{
 		//セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 
-		//社員番号の取得
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員IDの取得
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 
 		//選択した工数記録の日付を取得
 		String day = request.getParameter("day");
@@ -62,7 +62,7 @@ public class  ReportEachSelect extends HttpServlet{
 			rd.dbConnect();
 
 			//該当社員の工数記録を検索
-			report = rd.selectReport(number,day);
+			report = rd.selectReport(employee_id,day);
 
 			//セッションスコープに保存
 			session.setAttribute("report",report);
