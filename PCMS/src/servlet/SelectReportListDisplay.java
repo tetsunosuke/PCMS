@@ -52,8 +52,8 @@ public class SelectReportListDisplay extends HttpServlet{
 		//セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 
-		//社員一覧から選択した社員番号を取得
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員一覧から選択した社員IDを取得
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 
 		//社員検索準備
 		EmployeeDAO ed = new EmployeeDAO();
@@ -69,10 +69,10 @@ public class SelectReportListDisplay extends HttpServlet{
 			rd.dbConnect();
 
 			//選択した社員の社員情報の取得
-			employee = ed.selectEmployee(number);
+			employee = ed.selectEmployee(employee_id);
 
 			//工数記録一覧表示
-			rlist = rd.selectAllReport(number);
+			rlist = rd.selectAllReport(employee_id);
 
 			//選択した社員情報の保存
 			session.setAttribute("employee",employee);
