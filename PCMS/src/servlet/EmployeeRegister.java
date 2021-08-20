@@ -49,18 +49,18 @@ public class EmployeeRegister extends HttpServlet{
 
 		//自動表示した社員番号を取得
 		Employee syain = (Employee)session.getAttribute("employee");
-		//社員番号
-		int number = syain.getNumber();
+		//社員ID
+		int employee_id = syain.getEmployee_Id();
 
 		//新規社員登録画面から社員情報を取得
 		//姓
-		String lastName = request.getParameter("lastName");
+		String last_name = request.getParameter("last_name");
 		//名
-		String firstName = request.getParameter("firstName");
+		String first_name = request.getParameter("first_name");
 		//姓フリガナ
-		String lastKana = request.getParameter("lastKana");
+		String last_kana = request.getParameter("last_kana");
 		//名フリガナ
-		String firstKana = request.getParameter("firstKana");
+		String first_kana = request.getParameter("first_kana");
 		//部署名
 		String department_name = request.getParameter("department_name");
 		//血液型
@@ -79,7 +79,7 @@ public class EmployeeRegister extends HttpServlet{
 			ed.dbConnect();
 
 			//新規社員情報をデータベースに登録
-			registJudge = ed.registEmployee(number,lastName,firstName,lastKana,firstKana,department_name,blood,employee_password);
+			registJudge = ed.registEmployee(employee_id,last_name,first_name,last_kana,first_kana,department_name,blood,employee_password);
 
 		}catch (SQLException e){
 			e.printStackTrace();
@@ -95,11 +95,11 @@ public class EmployeeRegister extends HttpServlet{
 		}
 
 		if(registJudge) {
-			//登録成功
+			//新規社員登録成功
 			RequestDispatcher disp = request.getRequestDispatcher("employee_regist_succeed.jsp");
 			disp.forward(request, response);
 		}else{
-			//登録失敗
+			//新規社員登録失敗
 			RequestDispatcher disp = request.getRequestDispatcher("employee_regist_error.jsp");
 			disp.forward(request, response);
 		}
