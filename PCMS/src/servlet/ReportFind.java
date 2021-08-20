@@ -49,8 +49,8 @@ public class ReportFind extends HttpServlet{
 		//セッションオブジェクトの開始
 		HttpSession session = request.getSession();
 
-		//ログイン中の社員番号を取得
-		int number = (Integer)session.getAttribute("number");
+		//ログイン中の社員IDを取得
+		int employee_id = (Integer)session.getAttribute("employee_id");
 
 		//工数記録検索準備
 		ReportDAO rd = new ReportDAO();
@@ -61,7 +61,7 @@ public class ReportFind extends HttpServlet{
 			rd.dbConnect();
 
 			//工数記録の検索
-			rlist = rd.findReport(number);
+			rlist = rd.findReport(employee_id);
 
 			//セッションスコープに保存
 			session.setAttribute("rlist",rlist);
