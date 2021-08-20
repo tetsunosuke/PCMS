@@ -40,7 +40,7 @@ public class DepartmentTimeAddition extends HttpServlet{
 	*@param response Servletがクライアントに返すレスポンス内容を含むHttpServletResponseオブジェクト
 	*@throws ServletException ServletがPostリクエストを処理中にServlet内で例外が発生
 	*@throws IOException ServletがPostリクエストを処理中に入出力エラーが発生
-	*部署コード、機械名を取得し、部署毎の工数合計時間を計算する。<br>
+	*部署ID、機械名を取得し、部署毎の工数合計時間を計算する。<br>
 	*セッションに計算した工数合計時間をセットする。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,8 +50,8 @@ public class DepartmentTimeAddition extends HttpServlet{
 
 		//選択した部署情報を取得
 		Department busho = (Department)session.getAttribute("department");
-		//部署コードの取得
-		String department_code = busho.getDepartment_Code();
+		//部署IDの取得
+		String department_id = busho.getDepartment_Id();
 		//機械名の取得
 		String machine_name = busho.getMachine_Name();
 
@@ -60,11 +60,11 @@ public class DepartmentTimeAddition extends HttpServlet{
 		Department department = new Department();
 
 		//工数クラスに部署コードをセット
-		report.setDepartment_Code(department_code);
+		report.setDepartment_Id(department_id);
 		//工数クラスに機械名をセット
 		report.setMachine_Name(machine_name);
 		//部署クラスに部署コードをセット
-		department.setDepartment_Code(department_code);
+		department.setDepartment_Id(department_id);
 		//部署クラスに機械名をセット
 		department.setMachine_Name(machine_name);
 
