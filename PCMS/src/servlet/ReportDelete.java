@@ -43,8 +43,8 @@ public class ReportDelete extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//工数一覧から選択した工数情報を取得
-		//社員番号
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員ID
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//日付
 		String day = request.getParameter("day");
 
@@ -59,7 +59,7 @@ public class ReportDelete extends HttpServlet{
 			rd.dbConnect();
 
 			//選択した日付と一致する該当工数の削除
-			deleteJudge = rd.deleteReport(number,day);
+			deleteJudge = rd.deleteReport(employee_id,day);
 
 		}catch (SQLException e){
 			e.printStackTrace();
