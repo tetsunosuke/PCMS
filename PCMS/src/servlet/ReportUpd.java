@@ -51,17 +51,17 @@ public class ReportUpd extends HttpServlet{
 		//機械名
 		String machine_name = request.getParameter("machine_name");
 		//実働時間
-		int work_time=Integer.parseInt(request.getParameter("work_time"));
+		int work_time = Integer.parseInt(request.getParameter("work_time"));
 		//残業時間
-		int over_time=Integer.parseInt(request.getParameter("over_time"));
+		int over_time = Integer.parseInt(request.getParameter("over_time"));
 		//休日出勤
-		int holiday_work=Integer.parseInt(request.getParameter("holiday_work"));
+		int holiday_work = Integer.parseInt(request.getParameter("holiday_work"));
 		//作業項目
-		String task=request.getParameter("task");
-		//社員番号
-		int number=Integer.parseInt(request.getParameter("number"));
+		String task = request.getParameter("task");
+		//社員ID
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//日付
-		String day=request.getParameter("day");
+		String day = request.getParameter("day");
 
 		//セレクトボックス未選択でエラー
 		if(machine_name == "" || task == ""){
@@ -83,8 +83,8 @@ public class ReportUpd extends HttpServlet{
 		report.setHoliday_Work(holiday_work);
 		//作業内容をセット
 		report.setTask(task);
-		//社員番号をセット
-		report.setNumber(number);
+		//社員IDをセット
+		report.setEmployee_Id(employee_id);
 		//日付をセット
 		report.setDay(day);
 
