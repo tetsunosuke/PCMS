@@ -79,7 +79,7 @@ public class SelectAdminPassword extends HttpServlet{
 			RequestDispatcher disp = request.getRequestDispatcher("admin_regist_menu.jsp");
 			disp.forward(request, response);
 		}else{
-			//取得失敗
+			//管理者パスワード取得失敗
 			RequestDispatcher disp = request.getRequestDispatcher("login_error.jsp");
 			disp.forward(request, response);
 		}
