@@ -48,9 +48,9 @@ public class AdminDelete extends HttpServlet{
 		//セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 
-		//管理者としてログイン中の社員番号を取得
+		//管理者としてログイン中の社員IDを取得
 		Admin manager = (Admin)session.getAttribute("admin");
-		int number = manager.getNumber();
+		int employee_id = manager.getEmployee_Id();
 
 		//管理者権限削除準備
 		AdminDAO ad = new AdminDAO();
@@ -59,7 +59,7 @@ public class AdminDelete extends HttpServlet{
 		boolean deleteJudge = false;
 
 		//管理者ゲストの場合、削除不可
-		if(number == 0){
+		if(employee_id == 0){
 			RequestDispatcher disp = request.getRequestDispatcher("not_delete_guest_admin.jsp");
 			disp.forward(request, response);
 			return;
@@ -70,7 +70,7 @@ public class AdminDelete extends HttpServlet{
 			ad.dbConnect();
 
 			//管理者権限削除
-			deleteJudge = ad.deleteAdmin(number);
+			deleteJudge = ad.deleteAdmin(employee_id);
 
 		}catch (SQLException e){
 			e.printStackTrace();
