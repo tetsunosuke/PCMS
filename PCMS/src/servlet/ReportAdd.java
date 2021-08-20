@@ -49,14 +49,14 @@ public class ReportAdd extends HttpServlet{
 
 		//ログイン中の社員情報を取得
 		Employee syain = (Employee)session.getAttribute("employee");
-		//社員番号
-		int number = syain.getNumber();
+		//社員ID
+		int employee_id = syain.getEmployee_Id();
 		//姓
-		String lastName = syain.getLastName();
+		String last_name = syain.getLast_Name();
 		//名
-		String firstName = syain.getFirstName();
-		//部署コード
-		String department_code = syain.getDepartment_Code();
+		String first_name = syain.getFirst_Name();
+		//部署ID
+		String department_id = syain.getDepartment_Id();
 
 		//工数記録画面から入力情報を取得
 		//日付
@@ -92,7 +92,7 @@ public class ReportAdd extends HttpServlet{
 			rd.dbConnect();
 
 			//追加工数記録をデータベースに登録
-			recordJudge = rd.addReport(number,lastName,firstName,department_code,day,machine_name,task,work_time,over_time,holiday_work,comment);
+			recordJudge = rd.addReport(employee_id,last_name,first_name,department_id,day,machine_name,task,work_time,over_time,holiday_work,comment);
 
 		}catch (SQLException e){
 			e.printStackTrace();
