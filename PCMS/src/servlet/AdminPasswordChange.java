@@ -186,7 +186,7 @@ public class AdminPasswordChange extends HttpServlet{
 		}
 
 		if(changeJudge) {
-			//管理者パスワード変更
+			//管理者パスワード変更成功
 			RequestDispatcher disp = request.getRequestDispatcher("admin_password_change_succeed.jsp");
 			disp.forward(request, response);
 		}else{
