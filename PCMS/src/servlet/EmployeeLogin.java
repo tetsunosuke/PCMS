@@ -49,8 +49,8 @@ public class EmployeeLogin extends HttpServlet{
 		HttpSession session = request.getSession();
 
 		//ログイン画面からログイン情報の取得
-		//社員番号
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員ID
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//パスワード
 		String employee_password = request.getParameter("employee_password");
 
@@ -63,11 +63,11 @@ public class EmployeeLogin extends HttpServlet{
 			ed.dbConnect();
 
 			//該当社員の検索
-			employee = ed.loginEmployee(number,employee_password);
+			employee = ed.loginEmployee(employee_id,employee_password);
 
 			//セッションスコープに保存
 			session.setAttribute("employee",employee);
-			session.setAttribute("number",number);
+			session.setAttribute("employee_id",employee_id);
 
 		}catch (SQLException e){
 			e.printStackTrace();
