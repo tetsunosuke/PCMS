@@ -37,13 +37,13 @@ public class EmployeeDelete extends HttpServlet{
 	*@param response Servletがクライアントに返すレスポンス内容を含むHttpServletResponseオブジェクト
 	*@throws ServletException ServletがPostリクエストを処理中にServlet内で例外が発生
 	*@throws IOException ServletがPostリクエストを処理中に入出力エラーが発生
-	*データベースに接続して選択した社員番号から該当社員を削除する。<br>
+	*データベースに接続して選択した社員IDから該当社員を削除する。<br>
 	*削除完了画面へ画面偏移する。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//社員一覧画面から選択した社員番号を取得
-		int number = Integer.parseInt(request.getParameter("number"));
+		//社員一覧画面から選択した社員IDを取得
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 
 		//削除準備
 		EmployeeDAO ed = new EmployeeDAO();
@@ -56,7 +56,7 @@ public class EmployeeDelete extends HttpServlet{
 			ed.dbConnect();
 
 			//選択した社員情報を削除
-			deleteJudge = ed.deleteEmployee(number);
+			deleteJudge = ed.deleteEmployee(employee_id);
 
 		}catch (SQLException e){
 			e.printStackTrace();
