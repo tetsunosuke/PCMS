@@ -15,7 +15,7 @@ public class ConnectionManager {
 	/**
 	 *Javaとpcmsデータベースを接続するためのURL
 	 */
-	private static final String url = "jdbc:mysql://localhost/pcms?serverTimezone=JST";
+	private static final String url = "jdbc:mysql://localhost/pcms";
 
 	/**
 	 *pcmsデータベースを使用するユーザー
