@@ -23,8 +23,8 @@
 		<form action="./EmployeeLogin"  method="post">
 			<table class="border_table">
 				<tr class="border_style">
-					<td>社員番号</td>
-					<td><input type="text" name="number" class="textbox" autocomplete="off" required></td>	<!-- <input>タグ:フォームを構成する様々な入力部品を作成する際に使用 -->	<!-- type="text"：一行テキストボックスを作成する。name：フォーム部品に名前をつける。value：送信される値を指定する。size：フォーム部品のサイズを指定する -->
+					<td>社員ID</td>
+					<td><input type="text" name="employee_id" class="textbox" autocomplete="off" required></td>
 				</tr>
 
 				<tr class="border_style">
