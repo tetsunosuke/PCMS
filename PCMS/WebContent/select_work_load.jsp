@@ -36,7 +36,7 @@ List<Report> rlist = (List<Report>)session.getAttribute("rlist");
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
@@ -44,13 +44,13 @@ List<Report> rlist = (List<Report>)session.getAttribute("rlist");
 	</nav>
 </header>
 
-<!-- 選択した社員番号、氏名、部署名,の表示 -->
+<!-- 選択した社員ID、氏名、部署名,の表示 -->
 <header class="sub_header">
 	<nav class="sub_header_menu">
 		<ul>
 			<!-- 選択した機械名と工数合計時間の表示 -->
-			<li class="display">社員番号:<%=syain.getNumber()%></li>
-			<li class="display">氏名:<%=syain.getLastName()%><%=syain.getFirstName()%></li>
+			<li class="display">社員ID:<%=syain.getEmployee_Id()%></li>
+			<li class="display">氏名:<%=syain.getLast_Name()%><%=syain.getFirst_Name()%></li>
 			<li class="display">部署名:<%=syain.getDepartment_Name()%></li>
 		</ul>
 	</nav>
@@ -78,7 +78,7 @@ List<Report> rlist = (List<Report>)session.getAttribute("rlist");
 				<td><%=report.getWork_Time()%>h</td>
 				<td><%=report.getOver_Time()%>h</td>
 				<td><%=report.getHoliday_Work()%>h</td>
-				<td><form action="./ReportEachSelect?name=<%=syain.getNumber()%>&name=<%=report.getDay()%>&number=<%=syain.getNumber()%>&day=<%=report.getDay()%>" method="post">
+				<td><form action="./ReportEachSelect?name=<%=syain.getEmployee_Id()%>&name=<%=report.getDay()%>&employee_id=<%=syain.getEmployee_Id()%>&day=<%=report.getDay()%>" method="post">
 						<button type ="submit" name="edit_report" class="small_button gray">編集</button>
 					</form>
 				</td>
