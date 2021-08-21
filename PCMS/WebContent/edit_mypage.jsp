@@ -27,12 +27,13 @@ Employee syain = (Employee)session.getAttribute("employee");
 <!-- ヘッダー -->
 <header>
 	<h1>PCMS</h1>
-	<!-- ログイン中の社員番号、氏名、部署名,の表示 -->
+
 	<nav class="header_menu">
 		<ul>
-			<li>社員番号:<%=syain.getNumber()%></li>
+			<!-- ログイン中の社員ID、氏名、部署名,の表示 -->
+			<li>社員ID:<%=syain.getEmployee_Id()%></li>
 			<li>部署名:<%=syain.getDepartment_Name()%></li>
-			<li>氏名:<%=syain.getLastName()%><%=syain.getFirstName()%></li>
+			<li>氏名:<%=syain.getLast_Name()%><%=syain.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="mypage.jsp">マイページ</a></li>
 			<li><a href="employee_password_change.jsp">パスワード変更</a></li>
@@ -49,20 +50,20 @@ Employee syain = (Employee)session.getAttribute("employee");
 	<form action="./EmployeeUpd" method="post">
 		<table class="border_table">
 			<tr class="border_style">
-				<th>社員番号</th>
-				<td><%=syain.getNumber()%><input type="hidden" name="number" value="<%=syain.getNumber()%>"></td>
+				<th>社員ID</th>
+				<td><%=syain.getEmployee_Id()%><input type="hidden" name="employee_id" value="<%=syain.getEmployee_Id()%>"></td>
 			</tr>
 
 			<tr class="border_style">
 				<th>フリガナ</th>
-				<td><input type="text" name="lastKana" value="<%=syain.getLastKana()%>" class="textbox">
-					<input type="text" name="firstKana" value="<%=syain.getFirstKana()%>" class="textbox"></td>
+				<td><input type="text" name="last_kana" value="<%=syain.getLast_Kana()%>" class="textbox">
+					<input type="text" name="first_kana" value="<%=syain.getFirst_Kana()%>" class="textbox"></td>
 			</tr>
 
 			<tr class="border_style">
 				<th>氏名</th>
-				<td><input type="text" name="lastName" value="<%=syain.getLastName()%>" class="textbox">
-					<input type="text" name="firstName" value="<%=syain.getFirstName()%>" class="textbox"></td>
+				<td><input type="text" name="last_kame" value="<%=syain.getLast_Name()%>" class="textbox">
+					<input type="text" name="first_name" value="<%=syain.getFirst_Name()%>" class="textbox"></td>
 			</tr>
 
 			<tr class="border_style">
@@ -91,7 +92,7 @@ Employee syain = (Employee)session.getAttribute("employee");
 
 			<tr class="border_style">
 				<th>生年月日/年齢</th>
-				<td><input type="date" name="birthDay" value="<%=syain.getBirthDay()%>">
+				<td><input type="date" name="birthday" value="<%=syain.getBirthday()%>">
 					<input type="text" name="age" value="<%=syain.getAge()%>" class="numberbox">歳
 				</td>
 			</tr>
