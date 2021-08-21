@@ -24,8 +24,8 @@
 	<form action="./EmployeeLogin"  method="post">
 		<table class="center_table">
 			<tr>
-				<th>社員番号</th>
-				<td><input type="text" name="number" class="textbox" autocomplete="off" required></td>
+				<th>社員ID</th>
+				<td><input type="text" name="employee_id" class="textbox" autocomplete="off" required></td>
 			</tr>
 
 			<tr>
