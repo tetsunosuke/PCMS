@@ -29,15 +29,15 @@ Employee syain=(Employee)session.getAttribute("employee");
 		<form action="./AdminRegister" method="post">
 			<table class="border_table">
 				<tr class="border_style">
-					<th>社員番号</th>
-					<td><input type="hidden" name="number" value="<%=syain.getNumber()%>"><%=syain.getNumber()%></td>
+					<th>社員ID</th>
+					<td><input type="hidden" name="employee_id" value="<%=syain.getEmployee_Id()%>"><%=syain.getEmployee_Id()%></td>
 				</tr>
 
 				<tr class="border_style">
 					<th>氏名</th>
-					<td><input type="hidden" name="lastName" value="<%=syain.getLastName()%>">
-						<input type="hidden" name="firstName" value="<%=syain.getFirstName()%>">
-						<%=syain.getLastName()%><%=syain.getFirstName()%>
+					<td><input type="hidden" name="last_name" value="<%=syain.getLast_Name()%>">
+						<input type="hidden" name="first_name" value="<%=syain.getFirst_Name()%>">
+						<%=syain.getLast_Name()%><%=syain.getFirst_Name()%>
 					</td>
 				</tr>
 
