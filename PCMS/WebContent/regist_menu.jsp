@@ -37,8 +37,8 @@ Employee syain = (Employee)session.getAttribute("employee");
 	<form action="./EmployeeRegister" method="post">
 		<table class="border_table">
 			<tr class="border_style">
-				<th>社員番号</th>
-				<td><%=syain.getNumber()%></td>
+				<th>社員ID</th>
+				<td><%=syain.getEmployee_Id()%></td>
 			</tr>
 
 			<tr class="border_style">
@@ -55,7 +55,8 @@ Employee syain = (Employee)session.getAttribute("employee");
 
 			<tr class="border_style">
 				<th>所属部署<span>(必須)</span></th>
-				<td><select name="department_name" class="selectbox">
+				<td>
+					<select name="department_name" class="selectbox">
 						<option>選択して下さい</option>
 							<%for(int i = 0; i < dlist.size(); i++){%>
 								<%Department department = (Department)dlist.get(i);%>
@@ -67,7 +68,8 @@ Employee syain = (Employee)session.getAttribute("employee");
 
 			<tr class="border_style">
 				<th>血液型<span>(必須)</span></th>
-				<td><select name="blood" class="selectbox">
+				<td>
+					<select name="blood" class="selectbox">
 						<option>選択して下さい</option>
 						<option value="A型">A型</option>
 						<option value="B型">B型</option>
