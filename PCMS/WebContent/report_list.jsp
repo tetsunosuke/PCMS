@@ -27,11 +27,10 @@ Admin manager=(Admin)session.getAttribute("admin");
 <header>
 	<h1>PCMS</h1>
 
-	<!-- ログイン中の社員番号、管理者氏名の表示 -->
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
@@ -62,8 +61,8 @@ Admin manager=(Admin)session.getAttribute("admin");
 			<%Report report=(Report)allReport.get(i);%>
 				<tr class="border_style">
 					<td><%=report.getDay()%></td>
-					<td><%=report.getNumber()%></td>
-					<td><%=report.getLastName()%> <%=report.getFirstName()%></td>
+					<td><%=report.getEmployee_Id()%></td>
+					<td><%=report.getLast_Name()%> <%=report.getFirst_Name()%></td>
 					<td><%=report.getMachine_Name()%></td>
 					<td><%=report.getTask()%></td>
 					<td><%=report.getWork_Time()%>h</td>
