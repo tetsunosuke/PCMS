@@ -49,7 +49,7 @@ List<Machine> mlist = (List<Machine>)session.getAttribute("mlist");
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
@@ -66,7 +66,7 @@ List<Machine> mlist = (List<Machine>)session.getAttribute("mlist");
 	<form action="./ReportUpd" method="post">
 		<table class="border_table-2">
 			<tr class="border_style fixed gray">
-				<th class="fixed">社員番号</th>
+				<th class="fixed">社員ID</th>
 				<th class="fixed">氏名</th>
 				<th class="fixed">日付</th>
 				<th class="fixed">機械名</th>
@@ -77,20 +77,22 @@ List<Machine> mlist = (List<Machine>)session.getAttribute("mlist");
 			</tr>
 
 			<tr class="border_style">
-				<td><%=nippo.getNumber()%><input type="hidden" name="number" value="<%=nippo.getNumber()%>"></td>
-				<td><%=nippo.getLastName()%><%=nippo.getFirstName()%></td>
+				<td><%=nippo.getEmployee_Id()%><input type="hidden" name="employee_id" value="<%=nippo.getEmployee_Id()%>"></td>
+				<td><%=nippo.getLast_Name()%><%=nippo.getFirst_Name()%></td>
 				<td><%=nippo.getDay()%><input type="hidden" name="day" value="<%=nippo.getDay()%>"></td>
-				<td><select name="machine_name" class="selectbox">
-					<%for(int i=0; i < mlist.size(); i++){%>
-						<%Machine machine=(Machine)mlist.get(i);%>
-							<option><%=machine.getMachine_Name()%></option>
+				<td>
+					<select name="machine_name" class="selectbox">
+						<%for(int i=0; i < mlist.size(); i++){%>
+							<%Machine machine=(Machine)mlist.get(i);%>
+								<option><%=machine.getMachine_Name()%></option>
 						<% } %>
 					</select>
 				</td>
-				<td><select name="task" class="selectbox">
-					<%for(int i=0; i < wlist.size(); i++){%>
-						<%Work work=(Work)wlist.get(i);%>
-							<option><%=work.getTask()%></option>
+				<td>
+					<select name="task" class="selectbox">
+						<%for(int i=0; i < wlist.size(); i++){%>
+							<%Work work=(Work)wlist.get(i);%>
+								<option><%=work.getTask()%></option>
 						<% } %>
 					</select>
 				</td>
@@ -107,7 +109,7 @@ List<Machine> mlist = (List<Machine>)session.getAttribute("mlist");
 	<br>
 
 	<!-- 工数記録削除ボタン -->
-	<form action="./ReportDelete?name=<%=nippo.getNumber()%>&name=<%=nippo.getDay()%>&number=<%=nippo.getNumber()%>&day=<%=nippo.getDay()%>" method="post">
+	<form action="./ReportDelete?name=<%=nippo.getEmployee_Id()%>&name=<%=nippo.getDay()%>&employee_id=<%=nippo.getEmployee_Id()%>&day=<%=nippo.getDay()%>" method="post">
 		<button type="submit" class="button red" onClick="return Check()">削除する</button>
 	</form>
 </div>
