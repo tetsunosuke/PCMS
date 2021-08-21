@@ -26,11 +26,13 @@ List<Report> rlist=(List<Report>)session.getAttribute("rlist");
 <!-- ヘッダー -->
 <header>
 	<h1>PCMS</h1>
+
 	<nav class="header_menu">
 		<ul>
-			<li>社員番号:<%=syain.getNumber()%></li>
+			<!-- ログイン中の社員ID、氏名、部署名,の表示 -->
+			<li>社員ID:<%=syain.getEmployee_Id()%></li>
 			<li>部署名:<%=syain.getDepartment_Name()%></li>
-			<li>氏名:<%=syain.getLastName()%><%=syain.getFirstName()%></li>
+			<li>氏名:<%=syain.getLast_Name()%><%=syain.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="mypage.jsp">マイページ</a></li>
 			<li><a href="employee_password_change.jsp">パスワード変更</a></li>
@@ -40,7 +42,7 @@ List<Report> rlist=(List<Report>)session.getAttribute("rlist");
 </header>
 
 <header class="sub_header">
-	<h3><%=syain.getLastName()%><%=syain.getFirstName()%>さんの工数記録</h3>
+	<h3><%=syain.getLast_Name()%><%=syain.getFirst_Name()%>さんの工数記録</h3>
 </header>
 
 <!-- 個人の過去に携わった工数記録の表示 -->
