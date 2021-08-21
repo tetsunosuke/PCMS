@@ -36,7 +36,7 @@ List<Report> rlist=(List<Report>)session.getAttribute("rlist");
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
@@ -73,7 +73,7 @@ List<Report> rlist=(List<Report>)session.getAttribute("rlist");
 				<tr>
 					<td><%=report.getDay()%></td>
 					<td><%=report.getTask()%></td>
-					<td><%=report.getLastName()%><%=report.getFirstName()%></td>
+					<td><%=report.getLast_Name()%><%=report.getFirst_Name()%></td>
 					<td><%=report.getWork_Time()%></td>
 					<td><%=report.getOver_Time()%></td>
 					<td><%=report.getHoliday_Work()%></td>
