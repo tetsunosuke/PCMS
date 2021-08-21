@@ -82,7 +82,7 @@ public class DepartmentListDisplay extends HttpServlet{
 		//全部署抽出結果
 		if(dlist != null  && nr != null){
 			//新規登録ボタンを選択
-			RequestDispatcher disp = request.getRequestDispatcher("./EmployeeNumberAutoDisplay");
+			RequestDispatcher disp = request.getRequestDispatcher("./EmployeeIdAutoDisplay");
 			disp.forward(request, response);
 		}else if(dlist != null  && nr == null){
 			//マイページ編集ボタンを選択
