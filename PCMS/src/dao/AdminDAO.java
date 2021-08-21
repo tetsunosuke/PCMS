@@ -47,7 +47,7 @@ public class AdminDAO {
 	}
 
 	/**
-	 *@param employee_id 社員ID
+	 *@param employee_is 社員ID
 	 *@param admin_password 管理者パスワード
 	 *@return 管理者情報を返す
 	 *@throws SQLException データベース接続処理でエラー
@@ -75,13 +75,13 @@ public class AdminDAO {
 			admin = new Admin();
 
 			//社員ID
-			admin.setEmployee_Id(rs.getInt(1));
+			admin.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			admin.setLast_Name(rs.getString(2));
+			admin.setLast_Name(rs.getString("last_name"));
 			//名
-			admin.setFirst_Name(rs.getString(3));
+			admin.setFirst_Name(rs.getString("first_name"));
 			//管理者パスワード
-			admin.setAdmin_Password(rs.getString(4));
+			admin.setAdmin_Password(rs.getString("admin_password"));
 		}
 		return admin;
 	}
@@ -232,7 +232,7 @@ public class AdminDAO {
 		Admin admin = null;
 
 		//データベースから管理者ゲスト情報を取得するSQL文
-		String sql ="select * from admins where number = 0";
+		String sql ="select * from admins where employee_id = 0";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
@@ -244,13 +244,13 @@ public class AdminDAO {
 			admin = new Admin();
 
 			//社員ID
-			admin.setEmployee_Id(rs.getInt(1));
+			admin.setEmployee_Id(rs.getInt("employee_id"));
 			//姓
-			admin.setLast_Name(rs.getString(2));
+			admin.setLast_Name(rs.getString("last_name"));
 			//名
-			admin.setFirst_Name(rs.getString(3));
+			admin.setFirst_Name(rs.getString("first_name"));
 			//管理者パスワード
-			admin.setAdmin_Password(rs.getString(4));
+			admin.setAdmin_Password(rs.getString("admin_password"));
 		}
 		return admin;
 	}
