@@ -31,7 +31,7 @@ Admin manager=(Admin)session.getAttribute("admin");
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
@@ -47,7 +47,7 @@ Admin manager=(Admin)session.getAttribute("admin");
 <div class="center_screen-4">
 	<table class="border_table-2">
 		<tr class="border_style gray fixed">
-			<th class="fixed">社員番号</th>
+			<th class="fixed">社員ID</th>
 			<th class="fixed">氏名</th>
 			<th class="fixed">フリガナ</th>
 			<th class="fixed">所属部署</th>
@@ -62,24 +62,24 @@ Admin manager=(Admin)session.getAttribute("admin");
 		<%for(int i=1; i<elist.size(); i++){%>
 			<%Employee employee=(Employee)elist.get(i);%>
 				<tr class="border_style fixed-2">
-					<td><%=employee.getNumber()%></td>
-					<td><%=employee.getLastName()%> <%=employee.getFirstName()%></td>
-					<td><%=employee.getLastKana()%> <%=employee.getFirstKana()%></td>
+					<td><%=employee.getEmployee_Id()%></td>
+					<td><%=employee.getLast_Name()%> <%=employee.getFirst_Name()%></td>
+					<td><%=employee.getLast_Kana()%> <%=employee.getFirst_Kana()%></td>
 					<td><%=employee.getDepartment_Name()%></td>
 					<td><%=employee.getAge()%></td>
-					<td><%=employee.getBirthDay()%></td>
+					<td><%=employee.getBirthday()%></td>
 					<td><%=employee.getGender()%></td>
 					<td><%=employee.getBlood()%></td>
 					<!-- 詳細ボタンをクリックすると、各社員工数実績を表示 -->
 					<td>
-						<form action="./SelectReportListDisplay?name=<%=employee.getNumber()%>&number=<%=employee.getNumber()%>" method="post">
+						<form action="./SelectReportListDisplay?name=<%=employee.getEmployee_Id()%>&employee_id=<%=employee.getEmployee_Id()%>" method="post">
 							<button type="submit" class="small_button gray">詳細</button>
 						</form>
 					</td>
 
 					<!-- 社員削除ボタン -->
 					<td>
-						<form action="./EmployeeDelete?name=<%=employee.getNumber()%>&number=<%=employee.getNumber()%>" method="post">
+						<form action="./EmployeeDelete?name=<%=employee.getEmployee_Id()%>&employee_id=<%=employee.getEmployee_Id()%>" method="post">
 							<button type="submit" class="small_button red" onClick="return Check()">削除</button>
 						</form>
 					</td>
