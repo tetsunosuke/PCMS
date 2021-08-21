@@ -80,9 +80,9 @@ public class WorkDAO {
 			work = new Work();
 
 			//部署ID
-			work.setDepartment_Id(rs.getString(1));
+			work.setDepartment_Id(rs.getString("department_id"));
 			//作業内容
-			work.setTask(rs.getString(2));
+			work.setTask(rs.getString("task"));
 
 			wlist.add(work);
 		}
