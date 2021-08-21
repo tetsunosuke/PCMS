@@ -438,7 +438,7 @@ public class EmployeeDAO {
 		Employee employee = null;
 
 		//データベースからゲスト情報を取得するSQL文
-		String sql ="select * from employees where number = 0";
+		String sql ="select * from employees where employee_id = 0";
 		ps = con.prepareStatement(sql);
 
 		//SQL文の実行
