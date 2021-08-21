@@ -36,7 +36,7 @@ Machine kikai = (Machine)session.getAttribute("machine");
 	<nav class="header_menu">
 		<ul>
 			<!-- ログイン中の管理者氏名の表示 -->
-			<li>管理者:<%=manager.getLastName()%><%=manager.getFirstName()%></li>
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
 			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
