@@ -81,11 +81,11 @@ public class MachineDAO {
 			machine = new Machine();
 
 			//機械番号
-			machine.setMachine_Number(rs.getString(1));
+			machine.setMachine_Number(rs.getString("machine_number"));
 			//機械名
-			machine.setMachine_Name(rs.getString(2));
+			machine.setMachine_Name(rs.getString("machine_name"));
 			//機械別工数合計時間
-			machine.setMachine_Hours(rs.getInt(3));
+			machine.setMachine_Hours(rs.getInt("machine_hours"));
 		}
 		return machine;
 	}
@@ -179,9 +179,9 @@ public class MachineDAO {
 			Machine machine = new Machine();
 
 			//機械番号
-			machine.setMachine_Number(rs.getString(1));
+			machine.setMachine_Number(rs.getString("machine_number"));
 			//機械名
-			machine.setMachine_Name(rs.getString(2));
+			machine.setMachine_Name(rs.getString("machine_name"));
 
 			mlist.add(machine);
 		}
@@ -239,7 +239,7 @@ public class MachineDAO {
 		if(rs.next()){
 
 			//機械別工数合計時間の取得
-			machine.setMachine_Hours(rs.getInt(1));
+			machine.setMachine_Hours(rs.getInt("machine_hours"));
 		}
 		return machine;
 	}
