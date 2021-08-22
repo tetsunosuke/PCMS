@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MachineDAO;
+import dto.Employee;
 
 /**
  *@author Akihiro Nakamura
@@ -41,6 +43,22 @@ public class MachineAdd extends HttpServlet{
 	*登録完了画面へ画面偏移する。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//セッションオブジェクトの生成
+		HttpSession session = request.getSession();
+
+		//ログインした社員情報の取得
+		Employee syain = (Employee)session.getAttribute("employee");
+
+		//社員IDの取得
+		int employee_id = syain.getEmployee_Id();
+
+		//ゲストユーザーの場合、機械登録不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_add_machine.jsp");
+			disp.forward(request, response);
+			return;
+		}
 
 		//追加機械番号を取得
 		String machine_number = request.getParameter("machine_number");
