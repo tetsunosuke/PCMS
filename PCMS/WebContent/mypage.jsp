@@ -63,8 +63,13 @@ Employee syain = (Employee)session.getAttribute("employee");
 		</tr>
 
 		<tr class="border_style">
-			<th>生年月日/年齢</th>
-			<td><%=syain.getBirthday()%>/<%=syain.getAge()%>歳</td>
+			<th>生年月日</th>
+			<td><%=syain.getBirthday()%></td>
+		</tr>
+
+		<tr class="border_style">
+			<th>年齢</th>
+			<td><%=syain.getAge()%>歳</td>
 		</tr>
 
 		<tr class="border_style">
