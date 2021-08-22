@@ -31,7 +31,7 @@ Admin manager=(Admin)session.getAttribute("admin");
 </header>
 
 <div class="center_screen">
-	<p>管理者ゲストユーザーのため削除できません。</p>
+	<p>管理者ゲストユーザーのため管理者権限を削除できません。</p>
 
 	<!-- 管理者メニュー画面へ -->
 	<a href="admin_menu.jsp"><button type="button" class="button blue">管理者メニュー画面へ</button></a>
