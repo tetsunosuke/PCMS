@@ -91,8 +91,15 @@ Employee syain = (Employee)session.getAttribute("employee");
 			</tr>
 
 			<tr class="border_style">
-				<th>生年月日/年齢</th>
-				<td><input type="date" name="birthday" value="<%=syain.getBirthday()%>">
+				<th>生年月日</th>
+				<td>
+					<input type="date" name="birthday" value="<%=syain.getBirthday()%>">
+				</td>
+			</tr>
+
+			<tr class="border_style">
+				<th>年齢</th>
+				<td>
 					<input type="text" name="age" value="<%=syain.getAge()%>" class="numberbox">歳
 				</td>
 			</tr>
