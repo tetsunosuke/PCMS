@@ -65,13 +65,6 @@ public class DepartmentAdd extends HttpServlet{
 		//追加登録判定
 		boolean addJudge = false;
 
-		//ゲストユーザーの場合、登録不可
-		if(employee_id == 0){
-			RequestDispatcher disp = request.getRequestDispatcher("not_regist_guest.jsp");
-			disp.forward(request, response);
-			return;
-		}
-
 		try {
 			//データベース接続
 			dd.dbConnect();
