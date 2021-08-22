@@ -63,6 +63,13 @@ public class ReportUpd extends HttpServlet{
 		//日付
 		String day = request.getParameter("day");
 
+		//管理者ゲストの場合、編集不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_edit_report.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//セレクトボックス未選択でエラー
 		if(machine_name == "" || task == ""){
 			//工数記録保存失敗
