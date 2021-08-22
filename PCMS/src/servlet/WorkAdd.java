@@ -48,8 +48,20 @@ public class WorkAdd extends HttpServlet{
 		//セッションオブジェクトの開始
 		HttpSession session = request.getSession();
 
-		//ログインした社員の部署IDを取得
+		//ログインした社員情報の取得
 		Employee syain = (Employee)session.getAttribute("employee");
+
+		//社員IDの取得
+		int employee_id = syain.getEmployee_Id();
+
+		//ゲストユーザーの場合、作業項目追加登録不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_add_task.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
+		//ログインした社員の部署IDを取得
 		String department_id = syain.getDepartment_Id();
 
 		//追加作業項目を取得
