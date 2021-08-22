@@ -34,16 +34,18 @@ Admin manager=(Admin)session.getAttribute("admin");
 <h5>管理者パスワード変更</h5>
 
 <div class="center_screen-3">
+
+	<p class = "input_comment">現在の管理者パスワードと新しい管理者パスワードを入力し、変更ボタンをクリックして下さい。</p>
+
 	<!-- 管理者パスワード情報の入力 -->
 	<form action="./AdminPasswordChange" method="post">
-		<p>現在の管理者パスワードと新しい管理者パスワードを入力し、変更ボタンをクリックして下さい。</p>
 			<table class="border_table">
 				<tr class="border_style">
 					<th>現在の管理者パスワード<span>(必須)</span></th>
 					<td>
 						<input type="password" name="current_password" required class="longbox">
 						<br>
-						<span class="password">※現在設定している管理者パスワードを入力して下さい。</span>
+						<span class="password_comment">※現在設定している管理者パスワードを入力して下さい。</span>
 					</td>
 				</tr>
 
@@ -52,7 +54,7 @@ Admin manager=(Admin)session.getAttribute("admin");
 					<td>
 						<input type="password" name="new_password" required class="longbox">
 						<br>
-						<span class="password">※半角英数字,6桁以上11桁以内で入力して下さい。</span>
+						<span class="password_comment">※半角英数字,6桁以上11桁以内で入力して下さい。</span>
 					</td>
 				</tr>
 
@@ -61,7 +63,7 @@ Admin manager=(Admin)session.getAttribute("admin");
 					<td>
 						<input type="password" name="renew_password" required class="longbox">
 						<br>
-						<span class="password">※確認のため、新しい管理者パスワードをもう一度入力して下さい。</span>
+						<span class="password_comment">※確認のため、新しい管理者パスワードをもう一度入力して下さい。</span>
 					</td>
 				</tr>
 			</table>
