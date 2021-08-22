@@ -69,6 +69,13 @@ public class EmployeeUpd extends HttpServlet{
 		//生年月日
 		String birthday = request.getParameter("birthday");
 
+		//ゲストユーザーの場合、編集不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_edit_guest.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//セレクトボックス未選択でエラー
 		if(department_name == "" || blood == ""){
 			//マイページ更新失敗
