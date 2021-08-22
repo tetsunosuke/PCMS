@@ -74,6 +74,13 @@ public class ReportAdd extends HttpServlet{
 		//コメント
 		String comment = request.getParameter("comment");
 
+		//ゲストユーザーの場合、工数記録保存不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_add_report.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//セレクトボックス未選択でエラー
 		if(machine_name == "" || task == ""){
 			//工数記録保存失敗
