@@ -37,16 +37,18 @@ Employee syain = (Employee)session.getAttribute("employee");
 <h5>パスワード変更</h5>
 
 <div class="center_screen-3">
+
+	<p class = "input_comment">現在のパスワードと新しいパスワードを入力し、変更ボタンをクリックして下さい。</p>
+
 	<!-- パスワード情報の入力 -->
 	<form action="./EmployeePasswordChange" method="post">
-		<p>現在のパスワードと新しいパスワードを入力し、変更ボタンをクリックして下さい。</p>
 			<table class="border_table">
 				<tr class="border_style">
 					<th>現在のパスワード<span>(必須)</span></th>
 					<td>
 						<input type="password" name="current_password" required class="longbox">
 						<br>
-						<span class="password">※現在設定しているパスワードを入力して下さい。</span>
+						<span class="password_comment">※現在設定しているパスワードを入力して下さい。</span>
 					</td>
 				</tr>
 
@@ -55,7 +57,7 @@ Employee syain = (Employee)session.getAttribute("employee");
 					<td>
 						<input type="password" name="new_password" required class="longbox">
 						<br>
-						<span class="password">※半角英数字,6桁以上11桁以内で入力して下さい。</span>
+						<span class="password_comment">※半角英数字,6桁以上11桁以内で入力して下さい。</span>
 					</td>
 				</tr>
 
@@ -64,7 +66,7 @@ Employee syain = (Employee)session.getAttribute("employee");
 					<td>
 						<input type="password" name="renew_password" required class="longbox">
 						<br>
-						<span class="password">※確認のため、新しいパスワードをもう一度入力して下さい。</span>
+						<span class="password_comment">※確認のため、新しいパスワードをもう一度入力して下さい。</span>
 					</td>
 				</tr>
 			</table>
