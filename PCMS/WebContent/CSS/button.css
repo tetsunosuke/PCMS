@@ -123,7 +123,7 @@
 }
 
 /*管理者権限削除ボタン*/
-.admin_delete_button {
+.admin_button {
 	position: fixed; /*絶対位置で場所を固定*/
 	top: 70px; /*固定位置*/
 	right: 5px; /*固定位置*/
@@ -133,6 +133,14 @@
 .button_fixed {
 	position: fixed; /*絶対位置で場所を固定*/
 	bottom: 55px; /*固定位置*/
+	left: 50%; /*固定位置*/
+	transform: translate(-50%, -50%);/*要素の配置指定*/
+}
+
+/*ボタン固定位置*/
+.button_fixed-2 {
+	position: fixed; /*絶対位置で場所を固定*/
+	bottom: 160px; /*固定位置*/
 	left: 50%; /*固定位置*/
 	transform: translate(-50%, -50%);/*要素の配置指定*/
 }
