@@ -13,14 +13,14 @@ body {
 
 /*システム名*/
 h2 {
-	margin: 65px auto 5px; /*タイトル位置*/
+	margin: 0px auto 5px; /*タイトル位置*/
 	color: #333333; /*文字色*/
 	font-size: 40px; /*文字サイズ*/
 }
 
 /*画面名称*/
 h5 {
-	margin: 70px auto 10px; /*タイトル位置*/
+	margin: 90px auto 10px; /*タイトル位置*/
 	color: #333333; /*文字色*/
 	font-size: 25px; /*文字サイズ*/
 	font-weight: normal; /*文字の太さ*/
@@ -40,11 +40,13 @@ p {
 
 span {
 	color: #ff0000; /*文字色*/
-	g
 }
 
-.password {
-	margin-top: 20px; /*要素外側上部余白*/
+.input_comment {
+	margin: 20px auto; /*要素外側上部余白*/
+}
+
+.password_comment {
 	color: #cccccc; /*文字色*/
 }
 
