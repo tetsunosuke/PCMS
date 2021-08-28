@@ -14,6 +14,11 @@
 	<h1>PCMS</h1>
 </header>
 
+<div class="admin_button">
+	<!-- 管理者ログイン -->
+	<a href="admin_login.jsp">管理者としてログイン</a>
+</div>
+
 <div class="center_screen">
 		<!-- システム名 -->
 		<h2>Product Cost Management System</h2>
@@ -39,14 +44,15 @@
 	</form>
 
 	<!-- ゲストログイン -->
-	<form action="./GuestEmployeeLogin" method="post">
-		<button type="submit" class="guest_button white">ゲストログイン</button>
-	</form>
+	<div class="button_fixed-2">
+		<p>ゲストログインはこちらから</p>
 
-	<!-- 管理者ログイン -->
-	<a href="admin_login.jsp">管理者としてログイン</a>
+		<form action="./GuestEmployeeLogin" method="post">
+			<button type="submit" class="guest_button white">ゲストログイン</button>
+		</form>
+	</div>
 
-	<!-- 新規登録メニュー -->
+	<!-- 新規社員登録 -->
 	<div class="button_fixed">
 		<p>はじめての方はこちらから</p>
 
