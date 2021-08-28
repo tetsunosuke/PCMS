@@ -3,12 +3,12 @@
 /*画面中央表示*/
 .center_screen {
 	text-align: center; /*中央寄せ*/
-	margin-top: 90px; /*要素外側上部余白*/
+	margin-top: 100px; /*要素外側上部余白*/
 	font-size: 17px; /*文字サイズ*/
 }
 
 .center_table {
-	margin: 10px auto; /*テーブル位置*/
+	margin: 20px auto; /*テーブル位置*/
 }
 
 th {
@@ -17,12 +17,12 @@ th {
 
 .center_screen table tr th {
 	text-align: left; /*テーブル見出し位置*/
-	padding: 5px 5px; /*テーブル見出し間隔*/
+	padding: 10px 5px; /*テーブル見出し間隔*/
 }
 
 .center_screen table tr td {
 	text-align: left; /*テーブルセル要素位置*/
-	padding: 5px 5px; /*テーブルセル要素間隔*/
+	padding: 10px 5px; /*テーブルセル要素間隔*/
 }
 
 .center_screen-2 {
@@ -37,7 +37,7 @@ th {
 
 .center_screen-2 table tr td {
 	text-align: left; /*左寄せ*/
-	padding: 11px; /*テーブルセル要素間隔*/
+	padding: 18px; /*テーブルセル要素間隔*/
 }
 
 .center_screen-3 {
@@ -53,7 +53,7 @@ th {
 
 .center_screen-3 table tr td {
 	text-align: left; /*左寄せ*/
-	padding: 25px 5px 5px; /*テーブルセル要素間隔*/
+	padding: 30px 5px 5px; /*テーブルセル要素間隔*/
 }
 
 .center_screen-4 {
@@ -81,29 +81,28 @@ th {
 
 .center_screen-5 table tr th {
 	text-align: left; /*テーブル見出し位置*/
-	padding: 10px 35px; /*テーブル見出し間隔*/
+	padding: 12px 35px; /*テーブル見出し間隔*/
 }
 
 .center_screen-5 table tr td {
 	text-align: left; /*テーブルセル要素位置*/
-	padding: 10px 35px; /*テーブルセル要素間隔*/
+	padding: 12px 35px; /*テーブルセル要素間隔*/
 }
 
 .center_screen-6 {
 	margin: 0 auto; /*中央寄せ*/
 	text-align: center; /*中央寄せ*/
 	font-size: 17px; /*文字サイズ*/
-	position: relative; /*相対配置*/
 }
 
 .center_screen-6 table tr th {
 	text-align: left; /*左寄せ*/
-	padding: 17px 5px; /*テーブル見出し間隔*/
+	padding: 20px 5px; /*テーブル見出し間隔*/
 }
 
 .center_screen-6 table tr td {
 	text-align: left; /*左寄せ*/
-	padding: 13px 0px; /*テーブルセル要素間隔*/
+	padding: 20px 0px; /*テーブルセル要素間隔*/
 }
 
 /*画面横並び*/
