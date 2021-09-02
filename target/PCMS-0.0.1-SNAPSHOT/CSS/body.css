@@ -1,0 +1,111 @@
+@CHARSET "UTF-8";
+
+* {
+	box-sizing: border-box; /*paddingとborderを幅と高さに含める*/
+	margin: 0; /*デフォルトの余白をリセット*/
+	padding: 0; /*デフォルトの余白をリセット*/
+}
+
+body {
+	background-color: #ffffff; /*背景色*/
+	font-family: 'arial unicode ms'; /*文字フォント*/
+}
+
+/*システム名*/
+h2 {
+	margin: 0px auto 5px; /*タイトル位置*/
+	color: #333333; /*文字色*/
+	font-size: 40px; /*文字サイズ*/
+}
+
+/*画面名称*/
+h5 {
+	margin: 90px auto 10px; /*タイトル位置*/
+	color: #333333; /*文字色*/
+	font-size: 25px; /*文字サイズ*/
+	font-weight: normal; /*文字の太さ*/
+	text-align: center; /*中央寄せ*/
+}
+
+/*aタグ*/
+a {
+	color: #0080ff; /*文字色*/
+}
+
+p {
+	text-align: center; /*中央寄せ*/
+	color: #333333; /*文字色*/
+	font-size: 17px; /*文字サイズ*/
+}
+
+span {
+	color: #ff0000; /*文字色*/
+}
+
+.input_comment {
+	margin: 20px auto; /*要素外側上部余白*/
+}
+
+.password_comment {
+	color: #cccccc; /*文字色*/
+}
+
+input::placeholder {
+	padding: 5px; /*要素内側間隔*/
+}
+
+/*備考欄*/
+.comment {
+	resize: none; /*サイズ固定*/
+	width: 270px; /*幅*/
+	height: 65px; /*高さ*/
+}
+
+/*テキストボックス*/
+.textbox {
+	width: 200px; /*幅*/
+	height: 35px; /*高さ*/
+}
+
+/*テキストボックス*/
+.longbox {
+	width: 205px; /*幅*/
+	height: 40px; /*高さ*/
+}
+
+/*数字入力テキストボックス*/
+.numberbox {
+	width: 60px; /*幅*/
+	height: 35px; /*高さ*/
+}
+
+/*プルダウンメニュー*/
+.selectbox {
+	width: 200px; /*幅*/
+	height: 35px; /*高さ*/
+}
+
+/*色の選定*/
+.red {
+	background-color: #fb4271; /*赤色*/
+}
+
+.blue {
+	background-color: #0080c0; /*青色*/
+}
+
+.darkblue {
+	background-color: #5f7d89; /*藍色*/
+}
+
+.lightgreen {
+	background-color: #33CC33; /*黄緑色*/
+}
+
+.gray {
+	background-color: #cccccc; /*灰色*/
+}
+
+.white {
+	background-color: #ffffff; /*白色*/
+}

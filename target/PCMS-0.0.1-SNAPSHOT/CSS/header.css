@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0; /*デフォルトの余白をリセット*/
+	padding: 0; /*デフォルトの余白をリセット*/
+}
+
+/*ヘッダー*/
+header {
+	width: 100%; /*ヘッダー幅*/
+	height: 60px; /*ヘッダー高さ*/
+	background-color: #0080c0; /*ヘッダー背景色*/
+	position: fixed; /*絶対位置で場所を固定*/
+	top: 0; /*固定位置*/
+	display: flex; /*横並びにする*/
+	align-items: center; /*子要素縦方向の配置*/
+	font-family: 'arial unicode ms'; /*ヘッダー文字フォント*/
+}
+
+/*システム名*/
+h1 {
+	margin: 20px 10px; /*外側余白*/
+	font-size: 30px; /*文字サイズ*/
+	color: #ffffff; /*文字色*/
+}
+
+/*ナビゲーションバー*/
+.header_menu {
+	margin-left: auto; /*右寄せ*/
+}
+
+ul {
+	list-style: none; /*文字先頭のマーカーを削除*/
+	display: flex; /*横並びにする*/
+}
+
+li {
+	margin: 0 10px; /*外側余白*/
+	font-size: 15px; /*文字サイズ*/
+}
+
+/*ヘッダーメニュー*/
+.header_menu ul li a {
+	text-decoration: none; /*aタグアンダーライン削除*/
+	color: #ffffff; /*文字色*/
+}
+
+/*ヘッダーメニューアニメーション*/
+.header_menu ul li a:hover {
+	opacity: 0.7; /*透明度を下げる*/
+	color: #ffffff; /*カーソルを置いた時の文字色*/
+}
+
+/*サブヘッダー*/
+.sub_header {
+	width: 100%; /*ヘッダー幅*/
+	height: 50px; /*ヘッダー高さ*/
+	background-color: #699ba0; /*ヘッダー背景色*/
+	position: fixed; /*絶対位置で場所を固定*/
+	top: 60px; /*固定位置*/
+	display: flex; /*横並びにする*/
+	align-items: center; /*子要素縦方向の配置*/
+	font-family: 'arial unicode ms'; /*ヘッダー文字フォント*/
+}
+
+/*一覧画面名称*/
+h3 {
+	margin: 20px 10px; /*タイトル位置*/
+	color: #ffffff; /*文字色*/
+	font-size: 20px; /*文字サイズ*/
+	font-weight: normal; /*文字の太さ*/
+}
+
+/*サブヘッダーメニュー*/
+.sub_header_menu {
+	margin-right: auto; /*左寄せ*/
+}
+
+/*サブヘッダー表示*/
+.display {
+	margin: 0 10px; /*外側余白*/
+	font-size: 20px; /*文字サイズ*/
+	color: #ffffff; /*文字色*/
+}

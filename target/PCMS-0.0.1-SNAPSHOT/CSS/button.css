@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+
+/*ボタン*/
+.button {
+	width: 330px; /*ボタン幅*/
+	height: 50px; /*ボタン高さ*/
+	display: inline-block; /*要素指定*/
+	font-size: 17px; /*文字サイズ*/
+	text-align: center; /*文字位置*/
+	color: #ffffff; /*文字色*/
+	border: none; /*枠線なし*/
+	cursor: pointer; /*カーソル*/
+	transition: .2s; /*なめらか度*/
+	box-shadow: 2px 2px 2px #666666; /*影の設定*/
+	border-radius: 25px; /*角を丸くする*/
+	text-decoration: none; /*テキスト装飾なし*/
+}
+
+/*ボタンアニメーション*/
+.button:hover {
+	box-shadow: none; /*影を消去*/
+	opacity: 0.8; /*透明度を下げる*/
+}
+
+/*ゲストボタン*/
+.guest_button {
+	margin: 5px auto; /*ボタン外側余白*/
+	width: 330px; /*ボタン幅*/
+	height: 50px; /*ボタン高さ*/
+	display: inline-block; /*要素指定*/
+	font-size: 17px; /*文字サイズ*/
+	text-align: center; /*文字位置*/
+	color: #76e8f1; /*文字色*/
+	border: 2px solid #76e8f1; /*枠線色*/
+	cursor: pointer; /*カーソル*/
+	transition: .2s; /*なめらか度*/
+	box-shadow: 2px 2px 2px #666666; /*影の設定*/
+	border-radius: 25px; /*角を丸くする*/
+	text-decoration: none; /*テキスト装飾なし*/
+}
+
+/*ゲストボタンアニメーション*/
+.guest_button:hover {
+	box-shadow: none; /*影を消去*/
+	opacity: 0.8; /*透明度を下げる*/
+}
+
+/*ミニボタン*/
+.small_button {
+	display: inline-block; /*要素指定*/
+	font-size: 12pt; /*文字サイズ*/
+	text-align: center; /*文字位置*/
+	padding: 10px 15px; /*ボタン余白*/
+	color: #333333; /*文字色*/
+	border: none; /*枠線なし*/
+	cursor: pointer; /*カーソル*/
+	transition: .2s; /*なめらか度*/
+	box-shadow: 2px 2px 2px #666666; /*影の設定*/
+	border-radius: 25px; /*角を丸くする*/
+	text-decoration: none; /*テキスト装飾なし*/
+}
+
+/*ミニボタンアニメーション*/
+.small_button:hover {
+	box-shadow: none; /*影を消去*/
+	opacity: 0.8; /*透明度を下げる*/
+}
+
+/*戻るボタン*/
+.back_button {
+	display: inline-block; /*要素指定*/
+	font-size: 17px; /*文字サイズ*/
+	text-align: center; /*文字位置*/
+	padding: 10px 40px; /*ボタン余白*/
+	background-color: #c0c0c0; /*ボタン背景色*/
+	color: #333333; /*文字色*/
+	border: none; /*枠線なし*/
+	cursor: pointer; /*カーソル*/
+	transition: .2s; /*なめらか度*/
+	box-shadow: 2px 2px 2px #666666; /*影の設定*/
+	border-radius: 25px; /*角を丸くする*/
+	text-decoration: none; /*テキスト装飾なし*/
+	position: fixed; /*絶対位置で場所を固定*/
+	bottom: 80px; /*固定位置*/
+	left: 10px; /*固定位置*/
+}
+
+/*戻るボタンアニメーション*/
+.back_button:hover {
+	box-shadow: none; /*影を消去*/
+	opacity: 0.8; /*透明度を下げる*/
+}
+
+/*戻るボタン矢印配置*/
+.back_button::after {
+	content: "←"; /*挿入文字列*/
+	position: absolute; /*要素の配置を指定*/
+	top: 50%; /*指定配置の上から50%*/
+	left: 10px; /*指定配置の左から10px*/
+	transform: translateY(-50%); /*要素縦方向の配置指定*/
+}
+
+/*メニューボタン*/
+.menu_button {
+	width: 320px; /*ボタン幅*/
+	height: 150px; /*ボタン高さ*/
+	display: inline-block; /*要素指定*/
+	font-size: 25px; /*文字サイズ*/
+	text-align: center; /*文字位置*/
+	border-radius: 25px; /*角を丸くする*/
+	color: #333333; /*文字色*/
+	cursor: pointer; /*カーソル*/
+	transition: .2s; /*なめらか度*/
+	box-shadow: 2px 2px 2px #666666; /*影の設定*/
+	border: none; /*枠線なし*/
+	margin: 0px 10px; /*外側余白*/
+}
+
+/*メニューボタンアニメーション*/
+.menu_button:hover {
+	box-shadow: none; /*影を消去*/
+	opacity: 0.8; /*透明度を下げる*/
+}
+
+/*管理者メニュー右上表示ボタン*/
+.admin_button {
+	position: fixed; /*絶対位置で場所を固定*/
+	top: 70px; /*固定位置*/
+	right: 5px; /*固定位置*/
+}
+
+/*ボタン固定位置*/
+.button_fixed {
+	position: fixed; /*絶対位置で場所を固定*/
+	bottom: 55px; /*固定位置*/
+	left: 50%; /*固定位置*/
+	transform: translate(-50%, -50%);/*要素の配置指定*/
+}
+
+/*ボタン固定位置*/
+.button_fixed-2 {
+	position: fixed; /*絶対位置で場所を固定*/
+	bottom: 160px; /*固定位置*/
+	left: 50%; /*固定位置*/
+	transform: translate(-50%, -50%);/*要素の配置指定*/
+}
