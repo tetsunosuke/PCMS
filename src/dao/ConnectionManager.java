@@ -13,20 +13,9 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
 	/**
-	 *Javaとpcmsデータベースを接続するためのURL
+	 *Javaを使用してHerokuのClearDBに接続
 	 */
-	private static final String url = "jdbc:mysql://localhost/pcms";
-
-	/**
-	 *pcmsデータベースを使用するユーザー
-	 */
-	private static final String user = "root";
-
-	/**
-	 *pcmsデータベースを使用するために必要なパスワード
-	 */
-	private static final String pass = "pw";
-
+	private static final String dsn = java.lang.System.getenv("CLEARDB_DATABASE_URL");
 	/**
 	 *特定のデータベースとの接続
 	 */
@@ -57,7 +46,7 @@ public class ConnectionManager {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			//データベース接続情報
-			con = DriverManager.getConnection(url,user,pass);
+			con = DriverManager.getConnection("jdbc:" + dsn);
 
 		//Class.forName()で例外発生
 		}catch(ClassNotFoundException e){
