@@ -43,14 +43,14 @@ Employee syain = (Employee)session.getAttribute("employee");
 
 			<tr class="border_style">
 				<th>氏名<span>(必須)</span></th>
-				<td><input type="text" name="lastName" class="textbox" autocomplete="off" placeholder="姓" required>	<!-- placeholder属性：フォームの入力欄に入力ヒントを表示する -->
-					<input type="text" name="firstName" class="textbox" autocomplete="off" placeholder="名" required></td>
+				<td><input type="text" name="last_name" class="textbox" autocomplete="off" placeholder="姓" required>	<!-- placeholder属性：フォームの入力欄に入力ヒントを表示する -->
+					<input type="text" name="first_name" class="textbox" autocomplete="off" placeholder="名" required></td>
 			</tr>
 
 			<tr class="border_style">
 				<th>フリガナ<span>(必須)</span></th>
-				<td><input type="text" name="lastKana" class="textbox" autocomplete="off" placeholder="セイ" required>
-					<input type="text" name="firstKana" class="textbox" autocomplete="off" placeholder="メイ" required></td>
+				<td><input type="text" name="last_kana" class="textbox" autocomplete="off" placeholder="セイ" required>
+					<input type="text" name="first_kana" class="textbox" autocomplete="off" placeholder="メイ" required></td>
 			</tr>
 
 			<tr class="border_style">
