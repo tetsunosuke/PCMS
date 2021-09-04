@@ -38,9 +38,13 @@
 	</form>
 
 	<!-- 管理者ゲストログイン -->
-	<form action="./GuestAdminLogin" method="post">
-		<a href="admin_menu.jsp"><button type="submit" class="guest_button white">管理者ゲストログイン</button></a>
-	</form>
+	<div class="button_fixed-2">
+		<p>管理者ゲストログインはこちらから</p>
+
+		<form action="./GuestAdminLogin" method="post">
+			<a href="admin_menu.jsp"><button type="submit" class="guest_button white">管理者ゲストログイン</button></a>
+		</form>
+	</div>
 
 	<div class="button_fixed">
 		<p>管理者権限を取得する場合はこちらから</p>
