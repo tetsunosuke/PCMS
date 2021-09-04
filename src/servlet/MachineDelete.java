@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MachineDAO;
+import dto.Employee;
 
 /**
  *@author Akihiro Nakamura
@@ -41,6 +43,22 @@ public class MachineDelete extends HttpServlet{
 	*削除完了画面へ画面偏移する。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//セッションオブジェクトの生成
+		HttpSession session = request.getSession();
+
+		//ログインした社員情報の取得
+		Employee syain = (Employee)session.getAttribute("employee");
+
+		//社員IDの取得
+		int employee_id = syain.getEmployee_Id();
+
+		//ゲストユーザーの場合、機械削除不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_delete_machine.jsp");
+			disp.forward(request, response);
+			return;
+		}
 
 		//選択した機械名を取得
 		String machine_name = request.getParameter("machine_name");
