@@ -48,6 +48,13 @@ public class ReportDelete extends HttpServlet{
 		//日付
 		String day = request.getParameter("day");
 
+		//管理者ゲストの場合、工数記録削除不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_delete_report.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//工数削除準備
 		ReportDAO rd = new ReportDAO();
 
