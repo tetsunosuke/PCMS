@@ -45,6 +45,13 @@ public class EmployeeDelete extends HttpServlet{
 		//社員一覧画面から選択した社員IDを取得
 		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 
+		//管理者ゲストユーザーの場合、社員削除不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_delete_employee.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//削除準備
 		EmployeeDAO ed = new EmployeeDAO();
 
