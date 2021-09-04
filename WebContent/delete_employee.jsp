@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dto.Employee"%>
+<%@ page import="dto.Admin"%>
 
 <%
 //セッションスコープに保存された管理者情報を取得
-Employee manager = (Employee)session.getAttribute("admin");
+Admin manager = (Admin)session.getAttribute("admin");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
