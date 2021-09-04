@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dto.Employee"%>
+<%@ page import="dto.Admin" %>
 
 <%
-//セッションスコープに保存された社員情報を取得
-Employee syain = (Employee)session.getAttribute("employee");
+//セッションスコープに保存された管理者情報を取得
+Admin manager=(Admin)session.getAttribute("admin");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,13 +21,10 @@ Employee syain = (Employee)session.getAttribute("employee");
 
 	<nav class="header_menu">
 		<ul>
-			<!-- ログイン中の社員ID、氏名、部署名,の表示 -->
-			<li>社員ID:<%=syain.getEmployee_Id()%></li>
-			<li>部署名:<%=syain.getDepartment_Name()%></li>
-			<li>氏名:<%=syain.getLast_Name()%><%=syain.getFirst_Name()%></li>
+			<!-- ログイン中の管理者氏名の表示 -->
+			<li>管理者:<%=manager.getLast_Name()%><%=manager.getFirst_Name()%></li>
 			<!-- ヘッダーメニューの表示 -->
-			<li><a href="mypage.jsp">マイページ</a></li>
-			<li><a href="employee_password_change.jsp">パスワード変更</a></li>
+			<li><a href="admin_password_change.jsp">管理者パスワード変更</a></li>
 			<li><a href="./Logout">ログアウト</a></li>
 		</ul>
 	</nav>
