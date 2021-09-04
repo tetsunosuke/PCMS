@@ -34,7 +34,7 @@ Employee syain = (Employee)session.getAttribute("employee");
 </header>
 
 <div class="center_screen">
-	<p>ゲストユーザーのため編集できません。</p>
+	<p>ゲストユーザーのためマイページは編集できません。</p>
 
 	<!-- マイページへ -->
 	<a href="mypage.jsp"><button type="button" class="button blue">マイページへ</button></a>
