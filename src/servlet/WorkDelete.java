@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.WorkDAO;
+import dto.Employee;
 
 /**
  *@author Akihiro Nakamura
@@ -41,6 +43,22 @@ public class WorkDelete extends HttpServlet{
 	*削除完了画面へ画面偏移する。
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//セッションオブジェクトの開始
+		HttpSession session = request.getSession();
+
+		//ログインした社員情報の取得
+		Employee syain = (Employee)session.getAttribute("employee");
+
+		//社員IDの取得
+		int employee_id = syain.getEmployee_Id();
+
+		//ゲストユーザーの場合、作業項目削除不可
+		if(employee_id == 0){
+			RequestDispatcher disp = request.getRequestDispatcher("not_delete_task.jsp");
+			disp.forward(request, response);
+			return;
+		}
 
 		//選択した作業項目を取得
 		String task = request.getParameter("task");
