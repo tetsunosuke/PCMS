@@ -25,7 +25,7 @@ Product Cost Management System
 という観点から、"もっと効率よく工数を管理し、管理者側の負担を減らしたい" といった思いで、このシステムを開発しました。  
 
 ## 使用技術
-・Java 1.8.0_271  
+・jdk-16.0.2  
 ・Servlet  
 ・JSP  
 ・HTML,CSS  
