@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ReportDAO;
+import dto.Admin;
 
 /**
  *@author Akihiro Nakamura
@@ -42,18 +44,25 @@ public class ReportDelete extends HttpServlet{
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//セッションオブジェクトの生成
+		HttpSession session = request.getSession();
+
+		//ログイン中の管理者IDを取得
+		Admin manager = (Admin)session.getAttribute("admin");
+		int admin_id = manager.getAdmin_Id();
+
+		//管理者ゲストユーザーの場合、工数記録削除不可
+		if(admin_id == 1){
+			RequestDispatcher disp = request.getRequestDispatcher("not_delete_report.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//工数一覧から選択した工数情報を取得
 		//社員ID
 		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//日付
 		String day = request.getParameter("day");
-
-		//管理者ゲストの場合、工数記録削除不可
-		if(employee_id == 0){
-			RequestDispatcher disp = request.getRequestDispatcher("not_delete_report.jsp");
-			disp.forward(request, response);
-			return;
-		}
 
 		//工数削除準備
 		ReportDAO rd = new ReportDAO();
