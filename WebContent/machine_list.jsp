@@ -6,7 +6,7 @@
 <%@ page import="java.util.List"%>
 
 <%
-//セッションスコープに保存された社員情報を取得
+//セッションスコープに保存された管理者情報を取得
 Admin manager = (Admin)session.getAttribute("admin");
 %>
 
