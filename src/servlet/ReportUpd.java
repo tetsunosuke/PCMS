@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ReportDAO;
+import dto.Admin;
 import dto.Report;
 
 /**
@@ -47,6 +48,17 @@ public class ReportUpd extends HttpServlet{
 		//セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 
+		//ログイン中の管理者IDを取得
+		Admin manager = (Admin)session.getAttribute("admin");
+		int admin_id = manager.getAdmin_Id();
+
+		//管理者ゲストユーザーの場合、工数記録編集不可
+		if(admin_id == 1){
+			RequestDispatcher disp = request.getRequestDispatcher("not_edit_report.jsp");
+			disp.forward(request, response);
+			return;
+		}
+
 		//編集した工数記録情報を取得
 		//機械名
 		String machine_name = request.getParameter("machine_name");
@@ -62,13 +74,6 @@ public class ReportUpd extends HttpServlet{
 		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 		//日付
 		String day = request.getParameter("day");
-
-		//管理者ゲストの場合、編集不可
-		if(employee_id == 0){
-			RequestDispatcher disp = request.getRequestDispatcher("not_edit_report.jsp");
-			disp.forward(request, response);
-			return;
-		}
 
 		//セレクトボックス未選択でエラー
 		if(machine_name == "" || task == ""){
