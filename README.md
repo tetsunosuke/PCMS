@@ -29,8 +29,8 @@ Product Cost Management System
 ・Servlet  
 ・JSP  
 ・HTML,CSS  
-・MySQL 8.0  
-・Tomcat 9.0  
+・MySQL 8.0.26  
+・Tomcat 9.0.52  
 
 Javaの仕組みや理解を深めるために、フレームワークは使わずに実装しました。  
 
