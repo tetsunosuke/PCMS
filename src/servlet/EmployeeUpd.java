@@ -16,7 +16,7 @@ import dto.Employee;
 
 /**
  *@author Akihiro Nakamura
- *社員情報を更新するクラス
+ *マイページから社員情報を更新するクラス
  */
 @WebServlet("/EmployeeUpd")
 public class EmployeeUpd extends HttpServlet{
@@ -69,9 +69,9 @@ public class EmployeeUpd extends HttpServlet{
 		//生年月日
 		String birthday = request.getParameter("birthday");
 
-		//ゲストユーザーの場合、編集不可
+		//ゲストユーザーの場合、マイページ編集不可
 		if(employee_id == 0){
-			RequestDispatcher disp = request.getRequestDispatcher("not_edit_guest.jsp");
+			RequestDispatcher disp = request.getRequestDispatcher("not_edit_mypage.jsp");
 			disp.forward(request, response);
 			return;
 		}
