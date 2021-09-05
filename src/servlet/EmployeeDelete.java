@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
+import dto.Admin;
 
 /**
  *@author Akihiro Nakamura
@@ -42,15 +44,22 @@ public class EmployeeDelete extends HttpServlet{
 	*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//社員一覧画面から選択した社員IDを取得
-		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
+		//セッションオブジェクトの生成
+		HttpSession session = request.getSession();
+
+		//ログイン中の管理者IDを取得
+		Admin manager = (Admin)session.getAttribute("admin");
+		int admin_id = manager.getAdmin_Id();
 
 		//管理者ゲストユーザーの場合、社員削除不可
-		if(employee_id == 0){
+		if(admin_id == 1){
 			RequestDispatcher disp = request.getRequestDispatcher("not_delete_employee.jsp");
 			disp.forward(request, response);
 			return;
 		}
+
+		//社員一覧画面から選択した社員IDを取得
+		int employee_id = Integer.parseInt(request.getParameter("employee_id"));
 
 		//削除準備
 		EmployeeDAO ed = new EmployeeDAO();
