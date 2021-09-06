@@ -37,6 +37,7 @@ public class ConnectionManager {
 	 *データベースへ接続するメソッド
 	 */
 	public Connection connect() throws SQLException{
+        System.out.println("ConnectionManager.connect()");
 
 		//初期化
 		con = null;
@@ -65,11 +66,14 @@ public class ConnectionManager {
 	 *データベース切断メソッド
 	 */
 	public Connection close() throws SQLException{
+        System.out.println("ConnectionManager.close()");
 
 		//データベースとの接続を切断
 		try{
-			if(con!= null)
+			if(con!= null) {
 				con.close();
+                System.out.println("con.close()");
+            }
 
 			if(ps != null)
 				ps.close();

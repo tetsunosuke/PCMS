@@ -35,6 +35,7 @@ public class EmployeeDAO {
 	 *データベースと接続するメソッド
 	 */
 	public void dbConnect() throws SQLException {
+        System.out.println("EmployeeDAO.dbConnect()");
 		ConnectionManager cm = new ConnectionManager();
 		con = cm.connect();
 	}
@@ -44,6 +45,7 @@ public class EmployeeDAO {
 	 *データベースとの接続を切断するメソッド
 	 */
 	public void dbClose() throws SQLException {
+        System.out.println("EmployeeDAO.dbClose()");
 		ConnectionManager cm = new ConnectionManager();
 		con = cm.close();
 	}
