@@ -38,6 +38,7 @@ public class EmployeeDAO {
         System.out.println("EmployeeDAO.dbConnect()");
 		ConnectionManager cm = new ConnectionManager();
 		con = cm.connect();
+        System.out.println("con(dbConnect)= " + con);
 	}
 
 	/**
@@ -48,6 +49,7 @@ public class EmployeeDAO {
         System.out.println("EmployeeDAO.dbClose()");
 		ConnectionManager cm = new ConnectionManager();
 		con = cm.close();
+        System.out.println("con(dbConnect)= " + con);
 	}
 
 	/**

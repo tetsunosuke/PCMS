@@ -55,6 +55,7 @@ public class MachineListDisplay extends HttpServlet{
 
 		try {
 			//データベース接続
+            System.out.println("md.dbConnect()");
 			md.dbConnect();
 
 			//機械一覧表示
@@ -70,6 +71,7 @@ public class MachineListDisplay extends HttpServlet{
 			try{
 				//データベースの切断
 				md.dbClose();
+                System.out.println("md.dbClose()");
 
 			}catch(SQLException e){
 				e.printStackTrace();
