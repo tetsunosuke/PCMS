@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 /**
  *@author Akihiro Nakamura
  *データベースへ接続するクラス
@@ -64,11 +63,11 @@ public class ConnectionManager {
 	 *@throws SQLException データベース接続処理でエラー
 	 *データベース切断メソッド
 	 */
-	public Connection close() throws SQLException{
+	public void close(Connection con) throws SQLException{
 
 		//データベースとの接続を切断
 		try{
-			if(con!= null)
+			if(con != null)
 				con.close();
 
 			if(ps != null)
@@ -80,6 +79,5 @@ public class ConnectionManager {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return con;
 	}
 }
