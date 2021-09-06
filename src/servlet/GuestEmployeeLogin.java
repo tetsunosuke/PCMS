@@ -52,11 +52,13 @@ public class GuestEmployeeLogin extends HttpServlet{
 		int employee_id = 0;
 
 		//ゲストログイン準備
+        System.out.println("GuestEmployeeLogin.doPost, create DAO");
 		EmployeeDAO ed = new EmployeeDAO();
 		Employee employee = new Employee();
 
 		try {
 			//データベース接続
+            System.out.println("ed.dbConnect()");
 			ed.dbConnect();
 
 			//ゲストログイン
@@ -73,6 +75,7 @@ public class GuestEmployeeLogin extends HttpServlet{
 			try{
 				//データベースの切断
 				ed.dbClose();
+                System.out.println("ed.dbClose()");
 
 			}catch(SQLException e){
 				e.printStackTrace();
