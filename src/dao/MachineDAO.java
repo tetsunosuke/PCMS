@@ -46,7 +46,7 @@ public class MachineDAO {
 	 */
 	public void dbClose() throws SQLException {
 		ConnectionManager cm = new ConnectionManager();
-		con = cm.close();
+		cm.close(con);
 	}
 
 	/**
