@@ -16,6 +16,43 @@ import dao.BaseDAO;
  */
 public class EmployeeDAO extends BaseDAO {
 	/**
+	 *特定のデータベースとの接続
+	 */
+	private Connection con;
+
+	/**
+	 *SQL文の解析と実行
+	 */
+	private PreparedStatement ps;
+
+	/**
+	 *SQL実行結果の取得
+	 */
+	private ResultSet rs;
+
+	/**
+	 *@throws SQLException データベース接続処理でエラー
+	 *データベースと接続するメソッド
+	 */
+	public void dbConnect() throws SQLException {
+        System.out.println("EmployeeDAO.dbConnect()");
+		ConnectionManager cm = new ConnectionManager();
+		con = cm.connect();
+        System.out.println("con(dbConnect)= " + con);
+	}
+
+	/**
+	 *@throws SQLException データベース切断処理でエラー
+	 *データベースとの接続を切断するメソッド
+	 */
+	public void dbClose() throws SQLException {
+        System.out.println("EmployeeDAO.dbClose()");
+		ConnectionManager cm = new ConnectionManager();
+		con = cm.close();
+        System.out.println("con(dbConnect)= " + con);
+	}
+
+	/**
 	 *リストに格納
 	 */
 	private List<Employee> elist = new ArrayList<>();

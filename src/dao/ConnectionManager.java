@@ -30,12 +30,14 @@ public class ConnectionManager {
 	 */
 	private ResultSet rs;
 
+
 	/**
 	 *@return conを返す
 	 *@throws SQLException データベース接続処理でエラー
 	 *データベースへ接続するメソッド
 	 */
 	public Connection connect() throws SQLException{
+        System.out.println("ConnectionManager.connect()");
 
 		//初期化
 		con = null;
@@ -63,12 +65,17 @@ public class ConnectionManager {
 	 *@throws SQLException データベース接続処理でエラー
 	 *データベース切断メソッド
 	 */
-	public void close(Connection con) throws SQLException{
+	public Connection close() throws SQLException{
+        System.out.println("ConnectionManager.close()");
+        System.out.println("con=" + con);
 
 		//データベースとの接続を切断
 		try{
-			if(con != null)
+			if(con!= null) {
 				con.close();
+                con = null;
+                System.out.println("con.close()");
+            }
 
 			if(ps != null)
 				ps.close();

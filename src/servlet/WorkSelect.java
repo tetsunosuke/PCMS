@@ -56,11 +56,13 @@ public class WorkSelect extends HttpServlet{
 
 		//作業項目検索準備
 		WorkDAO wd = new WorkDAO();
+        System.out.println("WorkDAO()");
 		List<Work> wlist = new ArrayList<>();
 
 		try {
 			//データベース接続
 			wd.dbConnect();
+            System.out.println("wb.dbConnect()");
 
 			//該当部署の作業項目取得
 			wlist = wd.selectTask(department_id);
@@ -75,6 +77,8 @@ public class WorkSelect extends HttpServlet{
 			try{
 				//データベースの切断
 				wd.dbClose();
+                System.out.println("wb.dbClose()");
+                java.sql.Connection cm = new dao.ConnectionManager().getConnection();
 
 			}catch(SQLException e){
 				e.printStackTrace();
